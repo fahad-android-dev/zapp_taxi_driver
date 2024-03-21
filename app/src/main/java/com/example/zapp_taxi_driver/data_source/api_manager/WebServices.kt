@@ -17,6 +17,8 @@ object WebServices {
 
     const val RegisterWs = "Driver/registration"
     const val LoginWs = "mobileotp/login"
+    const val VehicleTypeWs = "User/get_vehicle_type"
+    const val FuelTypeWs = "User/get_fuel_type"
 
     fun getLoginUrl() : String {
         return LoginWs
@@ -25,6 +27,14 @@ object WebServices {
     fun getRegisterUrl() : String {
         return RegisterWs
     }
+
+    fun getVehicleTypeUrl() : String {
+        return VehicleTypeWs
+    }
+    fun getFuelTypeUrl() : String {
+        return FuelTypeWs
+    }
+
 
 }
 
