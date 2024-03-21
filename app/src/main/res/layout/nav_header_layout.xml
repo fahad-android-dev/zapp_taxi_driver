@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/AppBackGroundStyleLight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/conNavHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivNavHeadImage"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginVertical="@dimen/_20sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:background="@color/color_black"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore=" " />
+
+                    <TextView
+                        android:id="@+id/txtNavHeadTitle"
+                        style="@style/fontRegular"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:gravity="start"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="@dimen/_2sdp"
+                        android:maxLines="2"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="true"
+                        android:textColor="@color/txt_color_primary"
+                        android:textSize="@dimen/btn_text_size"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivNavHeadImage"
+                        app:layout_constraintStart_toEndOf="@+id/ivNavHeadImage"
+                        app:layout_constraintTop_toTopOf="@+id/ivNavHeadImage"
+                        android:text="MR. USER NAME" />
+
+
+                    <ImageView
+                        android:id="@+id/ivBackArrow"
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_marginEnd="@dimen/screen_margin"
+                        android:src="@drawable/ic_right_arrow"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtNavHeadTitle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtNavHeadTitle"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
