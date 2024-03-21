@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.zapp_taxi_driver.mvvm.register.view_model.RegisterViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".mvvm.register.view.RegisterActivity">
+
+        <include
+            android:id="@+id/layoutToolbar"
+            layout="@layout/layout_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@id/btnRegister"
+            app:layout_constraintTop_toBottomOf="@+id/layoutToolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_20sdp"
+                >
+
+
+                <TextView
+                    android:id="@+id/txtDetails"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:text="@string/label_driver_details"
+                    android:textSize="@dimen/big_text_size"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDetails">
+
+                    <EditText
+                        android:id="@+id/edtName"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.registerObj.strName}"
+                        android:hint="@string/label_name" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilName">
+
+                    <EditText
+                        android:id="@+id/edtEmail"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_email_id"
+                        android:text="@={viewModel.registerObj.strEmail}"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilMobile"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilEmail">
+
+                    <EditText
+                        android:id="@+id/edtMobile"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.registerObj.strMobile}"
+                        android:hint="@string/label_mobile_number"
+                        android:inputType="number"
+                        android:maxLength="10" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtLanguage"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/label_language"
+                    android:textSize="@dimen/big_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/ilMobile" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilLanguage"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLanguage">
+
+                    <EditText
+                        android:id="@+id/edtLanguage"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:text="@={viewModel.registerObj.strLanguage}"
+                        android:drawableEnd="@drawable/ic_right_arrow"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilLanguage">
+
+                    <EditText
+                        android:id="@+id/edtPassword"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_password"
+                        android:text="@={viewModel.registerObj.strPassword}"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/ivPasswordEye"
+                    android:layout_width="@dimen/edt_end_icon_width"
+                    android:layout_height="@dimen/edt_end_icon_height"
+                    android:layout_marginEnd="@dimen/icon_end_margin"
+                    android:src="@drawable/ic_eye"
+                    app:layout_constraintBottom_toBottomOf="@+id/ilPassword"
+                    app:layout_constraintEnd_toEndOf="@+id/ilPassword"
+                    app:layout_constraintTop_toTopOf="@+id/ilPassword" />
+
+                <TextView
+                    android:id="@+id/txtDocumentDetails"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/driver_document_details"
+                    android:textSize="@dimen/big_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/ilPassword" />
+
+                <TextView
+                    android:id="@+id/txtDocumentSubtitle"
+                    style="@style/TextStyleStartRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/label_doucment_details_subtitle"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDocumentDetails" />
+
+                <TextView
+                    android:id="@+id/txtProfilePhoto"
+                    style="@style/TextStyleStartRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/label_profile_photo"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDocumentSubtitle" />
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    app:layout_constraintTop_toBottomOf="@id/txtProfilePhoto"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/btnProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonButtonStyle"
+                    android:background="@drawable/choosebtn"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivProfile"
+                    android:text="@string/label_upload_pic"
+                    app:drawableEndCompat="@drawable/drawable_cam" />
+
+                <TextView
+                    android:id="@+id/txtDriverLicense"
+                    style="@style/TextStyleStartRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/label_driver_licence_front"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/btnProfile" />
+
+                <ImageView
+                    android:id="@+id/ivDriverLicense"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    app:layout_constraintTop_toBottomOf="@id/txtDriverLicense"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/btnDriverLicense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonButtonStyle"
+                    android:background="@drawable/choosebtn"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivDriverLicense"
+                    android:text="@string/label_upload_pic"
+                    app:drawableEndCompat="@drawable/drawable_cam" />
+
+                <TextView
+                    android:id="@+id/txtRegistration"
+                    style="@style/TextStyleStartRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/label_registration_certificate_rc"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/btnDriverLicense" />
+
+                <ImageView
+                    android:id="@+id/ivRegistration"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    app:layout_constraintTop_toBottomOf="@id/txtRegistration"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/btnRegistration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonButtonStyle"
+                    android:background="@drawable/choosebtn"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivRegistration"
+                    android:text="@string/label_upload_pic"
+                    app:drawableEndCompat="@drawable/drawable_cam" />
+
+                <TextView
+                    android:id="@+id/txtVehicleInsurance"
+                    style="@style/TextStyleStartRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/label_vehicle_insurance"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/btnRegistration" />
+
+                <ImageView
+                    android:id="@+id/ivVehicleInsurance"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    app:layout_constraintTop_toBottomOf="@id/txtVehicleInsurance"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/btnVehicleInsurance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonButtonStyle"
+                    android:background="@drawable/choosebtn"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivVehicleInsurance"
+                    android:text="@string/label_upload_pic"
+                    app:drawableEndCompat="@drawable/drawable_cam" />
+
+                <TextView
+                    android:id="@+id/txtVehiclePermit"
+                    style="@style/TextStyleStartRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/label_vehicle_permit"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/btnVehicleInsurance" />
+
+                <ImageView
+                    android:id="@+id/ivVehiclePermit"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    app:layout_constraintTop_toBottomOf="@id/txtVehiclePermit"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/btnVehiclePermit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CommonButtonStyle"
+                    android:background="@drawable/choosebtn"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/ivVehiclePermit"
+                    android:text="@string/label_upload_pic"
+                    app:drawableEndCompat="@drawable/drawable_cam" />
+
+                <TextView
+                    android:id="@+id/txtVehicleDetails"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/label_vehicle_details"
+                    android:textSize="@dimen/big_text_size"
+                    app:layout_constraintTop_toBottomOf="@+id/btnVehiclePermit" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilRegistrationNo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVehicleDetails">
+
+                    <EditText
+                        android:id="@+id/edtRegistrationNo"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.registerObj.strRegistrationNo}"
+                        android:hint="@string/label_registration_no_vehicle_no" />
+                    
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilManufacturer"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilRegistrationNo">
+
+                    <EditText
+                        android:id="@+id/edtManufacturer"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.registerObj.strManufacturer}"
+                        android:hint="@string/label_manufacturer" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilModel"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilManufacturer">
+
+                    <EditText
+                        android:id="@+id/edtModel"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.registerObj.strModel}"
+                        android:hint="@string/label_model" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilSeatingCapacity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilModel">
+
+                    <EditText
+                        android:id="@+id/edtSeatingCapacity"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:maxLength="2"
+                        android:inputType="number"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.registerObj.strSeating}"
+                        android:hint="@string/label_seating_capacity" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilVehicleType"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilSeatingCapacity">
+
+                    <EditText
+                        android:id="@+id/edtVehicleType"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:text="@={viewModel.registerObj.strVehicleType}"
+                        android:focusable="false"
+                        android:hint="@string/label_vehicle_type" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilFuelType"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilVehicleType">
+
+                    <EditText
+                        android:id="@+id/edtFuelType"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:text="@={viewModel.registerObj.strFuelType}"
+                        android:focusable="false"
+                        android:hint="@string/label_fuel_type" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ilEngineCapacity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toBottomOf="@+id/ilFuelType">
+
+                    <EditText
+                        android:id="@+id/edtEngineCapacity"
+                        style="@style/OutLinedEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="@={viewModel.registerObj.strEngineCapacity}"
+                        android:hint="@string/label_engine_capacity" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/btnRegister"
+            style="@style/CommonButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_size"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/label_register"
+            android:textColor="@color/color_white"
+            android:background="@color/primary_dark_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

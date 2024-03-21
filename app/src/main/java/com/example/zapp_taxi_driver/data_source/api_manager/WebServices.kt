@@ -12,11 +12,19 @@ object WebServices {
             AppDomain.DEV -> ApiDev
         }
 
-    private const val ApiDev = "https://dev-api.openslot.co/api/v1/"
-    private const val ApiLive = "https://dev-api.openslot.co/api/v1/"
+    private const val ApiDev = "http://68.183.92.60/Zap_taxi/api/"
+    private const val ApiLive = "http://68.183.92.60/Zap_taxi/api/"
 
-    const val RegisterWs = "user/register?"
-    const val LoginWs = "user/login?"
+    const val RegisterWs = "Driver/registration"
+    const val LoginWs = "mobileotp/login"
+
+    fun getLoginUrl() : String {
+        return LoginWs
+    }
+
+    fun getRegisterUrl() : String {
+        return RegisterWs
+    }
 
 }
 

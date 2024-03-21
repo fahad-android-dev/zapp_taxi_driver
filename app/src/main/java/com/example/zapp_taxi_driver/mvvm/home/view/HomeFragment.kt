@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.zapp_taxi_driver.R
+import com.example.zapp_taxi_driver.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {

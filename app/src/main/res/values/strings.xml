@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">zapp_taxi_driver</string>
+    <string name="app_name" translatable="false">Zap Driver</string>
 
     <string name="pushwoosh_app_id_dev" translatable="false">add_app_id_(dev)_here</string>
     <string name="pushwoosh_app_id_live" translatable="false">add_app_id_(live)_here</string>
@@ -133,7 +133,7 @@
     <string name="error_invalid_email">Please enter valid email address</string>
     <string name="error_enter_password">Please enter password</string>
     <string name="error_enter_confirm_password">Please enter confirm password</string>
-    <string name="error_password_length">Password length must be of at least 6 characters</string>
+    <string name="error_password_length">Password length must be of at least 4 characters</string>
     <string name="error_enter_old_password">Please enter old password</string>
     <string name="error_enter_new_password">Please enter new password</string>
     <string name="error_password_match">Password and Confirm Password Doesn\'t Match</string>
@@ -149,9 +149,10 @@
 
     <!--Todo LOGIN-->
     <string name="label_login">Login</string>
+    <string name="label_login_underline"><u>Login</u></string>
     <string name="label_login_subtitle">Let\'s get you connected with business \nowners</string>
     <string name="hint_email_id">Email Id</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_password">Enter Your Password</string>
     <string name="label_remember_me">Remember me</string>
     <string name="label_or">Or</string>
     <string name="label_sign_up">Sign up</string>
@@ -163,5 +164,48 @@
     <string name="label_arabic">عربي</string>
     <string name="label_welcome">Welcome</string>
     <string name="label_lets_get_started">Let\'s get started</string>
+    <string name="label_enter_the_phone_no">Enter the Phone No.*</string>
+    <string name="label_forget_password">Forget Password ?</string>
+    <string name="label_register">Register</string>
+    <string name="error_please_enter_phone_number">Please enter phone number</string>
+    <string name="error_please_enter_valid_phone_number">Please enter valid phone number</string>
+    <string name="label_driver_details">Driver Details:</string>
+    <string name="label_name">Name</string>
+    <string name="label_mobile_number">Mobile Number</string>
+    <string name="label_language">Language*</string>
+    <string name="label_password">Password</string>
+    <string name="driver_document_details">Driver Document Details:</string>
+    <string name="label_doucment_details_subtitle">Note : Please check the documents before uploading</string>
+    <string name="label_profile_photo">Profile Photo *</string>
+    <string name="label_upload_pic">Upload Pic</string>
+    <string name="label_driver_licence_front">Driver Licence Front *</string>
+    <string name="label_registration_certificate_rc">Registration Certificate (RC)*</string>
+    <string name="label_vehicle_insurance">Vehicle Insurance *</string>
+    <string name="label_vehicle_permit">Vehicle Permit *</string>
+    <string name="label_vehicle_details">Vehicle Details:</string>
+    <string name="label_registration_no_vehicle_no">Registration No./Vehicle No.</string>
+    <string name="label_manufacturer">Manufacturer</string>
+    <string name="label_model">Model</string>
+    <string name="label_seating_capacity">Seating capacity</string>
+    <string name="label_vehicle_type">Vehicle Type</string>
+    <string name="label_fuel_type">Fuel Type</string>
+    <string name="label_engine_capacity">Engine Capacity</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_your_email">Please enter your email</string>
+    <string name="please_enter_your_mobile_number">Please enter your mobile number</string>
+    <string name="please_select_language">Please select language</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_select_profile_photo">Please select profile photo</string>
+    <string name="please_upload_your_drivers_license">Please upload your drivers license</string>
+    <string name="please_upload_your_rc">Please upload your RC</string>
+    <string name="please_upload_your_vehicle_insurance">"Please upload your vehicle insurance "</string>
+    <string name="please_upload_your_vehicle_permit">Please upload your vehicle permit</string>
+    <string name="please_enter_registration_number">Please enter registration number</string>
+    <string name="please_enter_your_cars_manufacturer">Please enter your cars manufacturer</string>
+    <string name="please_enter_model_number">Please enter model number</string>
+    <string name="please_enter_your_cars_seating_capacity">Please enter your cars seating capacity</string>
+    <string name="please_enter_your_vehicle_type">"Please enter your vehicle type "</string>
+    <string name="please_enter_your_fuel_type">Please enter your fuel type</string>
+    <string name="please_enter_your_vehicle_engine_capacity">Please enter your vehicle engine capacity</string>
 
 </resources>

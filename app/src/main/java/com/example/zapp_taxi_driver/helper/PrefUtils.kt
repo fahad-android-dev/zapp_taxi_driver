@@ -54,31 +54,13 @@ object PrefUtils {
         }
     }
 
-    fun Context.getOrderId(): String? {
-        val dt = DataStoreManager(this)
-        return runBlocking {
-            dt.getUserData().firstOrNull()?.data?.order_id
-        }
-    }
-
-    fun Context.saveOrderId(orderId: String) {
-        val dt = DataStoreManager(this)
-        val userData = getUserDataResponse()
-        userData?.data?.order_id = orderId
-        setUserDataResponse(userData)
-    }
-
     fun Context.getUserId(): String {
-        return getUserDataResponse()?.data?.id.asString()
+        return getUserDataResponse()?.user_id ?: ""
     }
 
-    fun Context.getUserName(): String {
-        val userModel = getUserDataResponse()
-        return userModel?.data?.firstName ?: ""
-    }
 
     fun Context.isUserLoggedIn(): Boolean {
-        return this.getUserDataResponse()?.data?.id != null
+        return this.getUserDataResponse()?.user_id != null
     }
 
     fun Context.getDeviceModel(): Device {
@@ -89,22 +71,6 @@ object PrefUtils {
             //app_version = Constants.APP_VERSION,
             os_version = Constants.OS_VERSION
         )
-    }
-
-    fun Context.getLoggedInEmail(): String {
-        var result = ""
-        if (!getUserDataResponse()?.data?.email.isNullOrEmpty()) {
-            result = getUserDataResponse()?.data?.email ?: ""
-        }
-        return result
-    }
-
-    fun Context.getLoggedInMobileNo(): String {
-        var result = ""
-        if (!getUserDataResponse()?.data?.phone.isNullOrEmpty()) {
-            result = getUserDataResponse()?.data?.phone ?: ""
-        }
-        return result
     }
 
     /**  -----------------------  ------------------------------------  ---------------------------------- */

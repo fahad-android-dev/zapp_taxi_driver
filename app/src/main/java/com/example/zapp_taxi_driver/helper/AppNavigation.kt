@@ -2,8 +2,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.example.zapp_taxi_driver.mvvm.home.view.HomeActivity
-import com.example.zapp_taxi_driver.mvvm.intro.view.IntroActivity
 import com.example.zapp_taxi_driver.mvvm.login.view.LoginActivity
+import com.example.zapp_taxi_driver.mvvm.register.view.RegisterActivity
 
 
 object AppNavigation {
@@ -21,8 +21,8 @@ object AppNavigation {
         startActivity(intent)
     }
 
-    fun Context.navigateToIntro() {
-        val intent = Intent(this, IntroActivity::class.java)
+    fun Context.navigateToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 

@@ -1,7 +1,7 @@
 package com.example.zapp_taxi_driver.mvvm.splash.view
 
 import AppNavigation.navigateToHome
-import AppNavigation.navigateToIntro
+import AppNavigation.navigateToLogin
 import android.annotation.SuppressLint
 import android.os.Bundle
 
@@ -38,7 +38,7 @@ class SplashActivity : BaseActivity() {
             if (isUserLoggedIn()) {
                 navigateToHome { finish() }
             } else {
-                navigateToIntro()
+                navigateToLogin()
                 finish()
             }
         }

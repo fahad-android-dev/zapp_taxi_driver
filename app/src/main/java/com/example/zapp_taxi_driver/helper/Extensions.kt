@@ -31,6 +31,8 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
@@ -236,12 +238,14 @@ object Extensions {
         }, delay)
     }
 
-    fun Activity.getGalleryIntent(isMultipleSelect: Boolean = false, block: (i: Intent) -> Unit) {
-        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, isMultipleSelect)
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        intent.type = "image/*"
-        block(intent)
+    fun Activity.getGalleryIntent(
+        mediaType: ActivityResultContracts.PickVisualMedia.VisualMediaType = ActivityResultContracts.PickVisualMedia.ImageOnly,
+        block: (request: PickVisualMediaRequest) -> Unit
+    ) {
+        val request = PickVisualMediaRequest.Builder()
+            .setMediaType(mediaType)
+            .build()
+        block(request)
     }
 
     fun Activity.getCameraIntent(block: (i: Intent, outputPath: String?, outputUri: Uri?) -> Unit) {
@@ -660,6 +664,35 @@ object Extensions {
             simpleDateFormat.parse(getCurrentDate(inputFormat))
         }
     }
+
+    fun Activity.receiveDataFromPickMediaGallery(
+        result: Uri?,
+        isBase64Enable: Boolean = true,
+        block: (model: AddImageModel) -> Unit,
+    ) {
+        try {
+            //single image
+            val imageUri: Uri? = result
+            val galleryBitmap = imageUri?.let { getBitmapFromGallery(this, it) }
+            val title = imageUri?.getOriginalFileName(this) ?: ""
+            val filePath = imageUri?.let { URIPathHelper.getPath(it, this) }
+            val imgBase64 =
+                if (isBase64Enable) imageUri?.let { Base64Converter.convertImgToBase64(it, this) } else ""
+            val model = AddImageModel(
+                image = galleryBitmap,
+                imgBase64 = imgBase64,
+                title = title,
+                filePath = filePath,
+                imageID = "",
+                imageUrl = ""
+            )
+            block(model)
+        } catch (e: Exception) {
+            println("here is exception ${e.message}")
+            return
+        }
+    }
+
     fun getAllDatesInMonth(year: Int, month: Int, context: Context, setTodaySelected: Boolean = true): ArrayList<CalenderDatesModel> {
         val arrListDays: ArrayList<CalenderDatesModel> = ArrayList()
         val fmt = SimpleDateFormat(Constants.DATE_DAY_FORMAT, Locale.ENGLISH)
@@ -692,6 +725,8 @@ object Extensions {
         }
         return arrListDays
     }
+
+
 
     fun Activity.addAnimations(vararg args : View) : ActivityOptionsCompat {
         val pairs: Array<Pair<View, String>> = Array(args.size){ index ->

@@ -67,12 +67,13 @@
     <style name="CommonButtonStyle">
         <item name="android:background">@drawable/btn_bg</item>
         <item name="android:layout_height">@dimen/btn_size</item>
-        <item name="android:textColor">@color/txt_color_white</item>
+        <item name="android:textColor">@color/txt_color_black</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center</item>
-        <item name="android:fontFamily">@font/font_semibold</item>
+        <item name="android:fontFamily">@font/font_medium</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/btn_text_size</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:paddingBottom">@dimen/_1sdp</item>
     </style>
@@ -85,12 +86,14 @@
         <item name="android:layout_gravity">start|center_vertical</item>
         <item name="android:background">@drawable/bg_edit_text</item>
         <item name="backgroundColor">@color/edt_color_state</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="android:textColor">@color/txt_color_primary</item>
         <item name="android:textColorHint">@color/hint_color_primary</item>
         <item name="android:gravity">start|center</item>
         <item name="android:singleLine">true</item>
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:maxLines">1</item>
+        <item name="android:elevation">@dimen/_4sdp</item>
         <item name="android:paddingStart">@dimen/_8sdp</item>
         <item name="android:paddingEnd">@dimen/_8sdp</item>
         <item name="android:imeOptions">actionNext</item>
@@ -111,6 +114,18 @@
         <item name="android:fontFamily">@font/font_regular</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textColor">@color/txt_color_primary</item>
+        <item name="android:textColorHint">@color/hint_color_primary</item>
+    </style>
+
+    <style name="OutLinedEditTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:layout_gravity">start</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@font/font_regular</item>
         <item name="android:textSize">@dimen/title_text_size</item>
         <item name="android:textColor">@color/txt_color_primary</item>
         <item name="android:textColorHint">@color/hint_color_primary</item>

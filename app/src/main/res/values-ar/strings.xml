@@ -138,6 +138,7 @@
 
     <!--Todo LOGIN-->
     <string name="label_login">تسجيل الدخول</string>
+    <string name="label_login_underline"><u>Login</u></string>
     <string name="label_login_subtitle">دعنا نساعدك على التواصل مع أصحاب الأعمال</string>
     <string name="hint_email_id">معرف البريد الإلكتروني</string>
     <string name="hint_password">كلمة المرور</string>
@@ -152,5 +153,20 @@
     <string name="label_arabic">عربي</string>
     <string name="label_welcome">مرحباً</string>
     <string name="label_lets_get_started">هيا بنا نبدأ</string>
+    <string name="label_enter_the_phone_no">Enter the Phone No.*</string>
+    <string name="label_forget_password">Forget Password ?</string>
+    <string name="label_register">Register</string>
+    <string name="error_please_enter_phone_number">Please enter phone number</string>
+    <string name="error_please_enter_valid_phone_number">Please enter valid phone number</string>
+    <string name="label_driver_details">Driver Details:</string>
+    <string name="label_name">Name</string>
+    <string name="label_mobile_number">Mobile Number</string>
+    <string name="label_language">Language*</string>
+    <string name="label_password">Password</string>
+    <string name="driver_document_details">Driver Document Details:</string>
+    <string name="label_doucment_details_subtitle">Note : Please check the documents before uploading</string>
+    <string name="label_profile_photo">Profile Photo</string>
+    <string name="label_driver_licence_front">Driver Licence Front *</string>
+    <string name="label_model">Model</string>
 
 </resources>

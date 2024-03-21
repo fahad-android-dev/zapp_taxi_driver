@@ -1,6 +1,7 @@
 package com.example.zapp_taxi_driver.mvvm.login.view
 
 import AppNavigation.navigateToHome
+import AppNavigation.navigateToRegister
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import androidx.core.content.ContextCompat
@@ -36,13 +37,6 @@ class LoginActivity : SocialRegisterActivity() {
     }
 
     private fun initializeFields() {
-        getUserRememberData().let {
-            if (it.isRemember == true) {
-                viewModel.objLogin.strEmail = it.emailOrPhone ?: ""
-                viewModel.objLogin.strPassword = it.password ?: ""
-                binding.ivRememberMeCheck.isSelected = true
-            }
-        }
     }
 
     private fun initObserver() {
@@ -50,16 +44,8 @@ class LoginActivity : SocialRegisterActivity() {
             hideProgressDialog()
             lifecycleScope.launch {
                 if (it != null) {
-                    if (it.status == 200) {
-                        it.message = getString(R.string.user_login_successfully)
+                    if (it.code == "404") {
                         setUserDataResponse(it)
-                        setUserRememberData(
-                            UserRememberDataModel(
-                                emailOrPhone  = viewModel.objLogin.strEmail,
-                                password =  viewModel.objLogin.strPassword,
-                                isRemember  = binding.ivRememberMeCheck.isSelected
-                            )
-                        )
                         navigateToHome(it.message ?: "") { finish() }
                     } else {
                         binding.root.showSnackBar(it.message ?: "")
@@ -76,13 +62,16 @@ class LoginActivity : SocialRegisterActivity() {
         binding.btnLogin.setOnClickListener {
             viewModel.checkValidation {
                 when (it) {
-                    1 -> binding.root.showSnackBar(getString(R.string.error_enter_email))
-                    2 -> binding.root.showSnackBar(getString(R.string.error_invalid_email))
+                    1 -> binding.root.showSnackBar(getString(R.string.error_please_enter_phone_number))
+                    2 -> binding.root.showSnackBar(getString(R.string.error_please_enter_valid_phone_number))
                     3 -> binding.root.showSnackBar(getString(R.string.error_enter_password))
                     4 -> binding.root.showSnackBar(getString(R.string.error_password_length))
-                    0 -> isInternetEnabled { navigateToHome { finish() } }
+                    0 -> callLoginApi()
                 }
             }
+        }
+        binding.btnRegister.setOnClickListener {
+            navigateToRegister()
         }
         binding.ivPasswordEye.setOnClickListener {
             if (binding.edtPassword.transformationMethod == null) {
@@ -95,58 +84,17 @@ class LoginActivity : SocialRegisterActivity() {
                 binding.ivPasswordEye.setImageDrawable(ContextCompat.getDrawable(this@LoginActivity, R.drawable.ic_eye_closed))
             }
         }
-
-        binding.linRememberMe.setOnClickListener {
-            binding.ivRememberMeCheck.isSelected = binding.ivRememberMeCheck.isSelected != true
-        }
-
-        binding.txtCreateNew.setOnClickListener {
-
-        }
-
-        binding.ivGoogle.setOnClickListener {
-            /*onGoogleLogin(OnGoogleSuccess = {
-                *//*viewModel.strSocialFirstName = it.strSocialFirstName
-                viewModel.strSocialLastName = it.strSocialLastName
-                viewModel.strSocialEmail = it.strSocialEmail
-                viewModel.strSocialImage = it.strSocialImage
-
-                showProgressDialog("F")
-                isInternetEnabled {
-                    viewModel.socialRegisterUser("G")
-                }*//*
-            } , OnError = {
-                binding.root.showSnackBar(it)
-            } )*/
-        }
-
-        binding.ivFacebook.setOnClickListener {
-            /*onFacebookLogin(OnFacebookSuccess = {
-               *//* viewModel.strSocialFirstName = it.strSocialFirstName
-                viewModel.strSocialLastName = it.strSocialLastName
-                viewModel.strSocialEmail = it.strSocialEmail
-                viewModel.strSocialImage = it.strSocialImage
-
-                showProgressDialog("F")
-                isInternetEnabled { viewModel.socialRegisterUser("F") }*//*
-            } , OnError = {
-                binding.root.showSnackBar(it)
-            } )*/
-        }
     }
 
     private fun callLoginApi() {
-        showProgressDialog()
-        viewModel.loginUser(
-            model = LoginRequestModel(
-                email = viewModel.objLogin.strEmail,
-                password = viewModel.objLogin.strPassword,
-                app_version = Constants.APP_VERSION,
-                device_model = Constants.DEVICE_MODEL,
-                device_token = Constants.DEVICE_TOKEN,
-                device_type = Constants.DEVICE_TYPE,
-                os_version = Constants.OS_VERSION
+        isInternetEnabled {
+            showProgressDialog()
+            viewModel.loginUser(
+                model = LoginRequestModel(
+                    mobile = viewModel.objLogin.strPhone,
+                    password = viewModel.objLogin.strPassword,
+                )
             )
-        )
+        }
     }
 }

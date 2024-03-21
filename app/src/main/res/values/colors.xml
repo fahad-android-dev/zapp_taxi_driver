@@ -3,7 +3,7 @@
     <!--todo theme based colors-->
     <!--todo Don't use variable this directly in any xml create specific variable in this color file and apply there and use that variable anywhere-->
     <color name="primary_color">#2A2C2A</color>
-    <color name="primary_dark_color">#1F211F</color>
+    <color name="primary_dark_color">#159fb9</color>
     <color name="primary_light_color">@color/color_white</color>
     <color name="secondary_color">#9A9A9A</color>
     <color name="secondary_dark_color">#1F211F</color>
@@ -12,7 +12,7 @@
     <!--todo App color configuration here -->
     <color name="app_bg_color">@color/color_white</color>
     <color name="app_bg_dark_color">@color/color_white</color>
-    <color name="app_color_status_bar">@color/color_white</color>
+    <color name="app_color_status_bar">#159fb9</color>
     <color name="app_color">@color/primary_color</color>
 
     <!--todo basic colors colors add here `keep variables name start with "color_"`-->
@@ -26,7 +26,7 @@
     <color name="bg_color_dark_grey">#696A69</color>
 
     <!--todo Button colors colors add here `keep variables name start with "btn_"`-->
-    <color name="btn_bg_color_primary">#141414</color>
+    <color name="btn_bg_color_primary">#FFFF00</color>
     <color name="btn_txt_color_primary">#141414</color>
     <color name="btn_bg_color_secondary">#141414</color>
     <color name="btn_txt_color_secondary">#141414</color>
@@ -44,11 +44,13 @@
     <!--todo tint colors colors add here `keep variables name start with "tint_color_"` -->
     <color name="tint_color_selected">@color/color_black </color>
     <color name="tint_color_unselected">#9A9A9A</color>
+    <color name="tint_color_grey">#f9f9f9</color>
 
     <!--todo App text colors  colors add here `keep variables name start with "txt_color_"` -->
     <color name="txt_color_white">@color/color_white</color>
     <color name="txt_color_black">@color/color_black</color>
-    <color name="txt_color_primary">#141414</color>
+    <color name="txt_color_primary">@color/color_black</color>
+    <color name="txt_color_blue">#159fb9</color>
     <color name="txt_color_secondary">#4D4C4C</color>
 
     <!--todo hint colors add here `keep variables name start with "txt_color_"` -->
@@ -62,8 +64,8 @@
     <color name="toolbar_color_icon">#141414</color>
 
     <!--todo divider colors add here `keep variables name start with "divider_line_"` -->
-    <color name="divider_line_color">#F1F1F1</color> <!--changed on as per new design app-->
-    <color name="divider_line_color_light">#DCDCDC</color> <!--changed on as per new design app-->
+    <color name="divider_line_color">#1976D2</color> <!--changed on as per new design app-->
+    <color name="divider_line_color_light">#159fb9</color> <!--changed on as per new design app-->
     <color name="divider_line_color_white">@color/color_white</color>
     <color name="divider_line_color_grey">#66C6C6C8</color>
 

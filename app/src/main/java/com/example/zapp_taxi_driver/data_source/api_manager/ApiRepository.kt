@@ -1,7 +1,9 @@
 package com.example.zapp_taxi_driver.data_source.api_manager
 
 
+import android.util.Base64
 import android.util.Log
+import com.example.zapp_taxi_driver.helper.Constants
 
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -26,6 +28,13 @@ object ApiRepository {
    inline fun <reified REQUEST , reified RESPONSE> apiPost (methodExt :String, model: REQUEST): Flow<RESPONSE> {
         return flow<RESPONSE> {
             val response = RestClient.apiService.post {
+                val creds : String = Constants.USERNAME + ":" + Constants.PASSWORD
+                val auth = ("Basic "
+                        + Base64.encodeToString(creds.toByteArray(), Base64.NO_WRAP))
+                headers{
+                    append("Authorization", auth)
+                    append("token", Constants.TOKEN)
+                }
                 url(WebServices.getDomainUrl() +methodExt)
                 setBody(model)
             }

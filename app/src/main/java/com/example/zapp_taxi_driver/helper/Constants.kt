@@ -63,6 +63,12 @@ object Constants {
     const val PB_title_en = "title_en"
     const val PB_title_ar = "title_ar"
 
+    const val TOKEN =
+        "d3770c98424db6e81fdc64f4dd7ad7ffc09a9d39e4cdd38de2c4b8cc68be408df638ded6da0ea5be8fceddfda4ec032afda8a052cfef4cc130eb1f3272cff158"
+
+    const val USERNAME = "thisissecureusername"
+    const val PASSWORD = "thisissecurepassword"
+
 }
 
 object DeepLinkTargets {
