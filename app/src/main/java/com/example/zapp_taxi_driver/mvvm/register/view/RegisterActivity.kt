@@ -5,6 +5,7 @@ import android.app.Activity
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -24,10 +25,15 @@ import com.example.zapp_taxi_driver.helper.Extensions.receiveDataFromPickMediaGa
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
 import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
 import com.example.zapp_taxi_driver.helper.helper_model.AddImageModel
+import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import com.example.zapp_taxi_driver.helper.interfaces.ImagePickerDialogInterface
+import com.example.zapp_taxi_driver.mvvm.common.model.CommonSelectionModel
+import com.example.zapp_taxi_driver.mvvm.common.view.CommonSelectionBottomSheetFragment
+import com.example.zapp_taxi_driver.mvvm.common.view.CommonSelectionObj
 import com.example.zapp_taxi_driver.mvvm.login.model.LoginRequestModel
 import com.example.zapp_taxi_driver.mvvm.register.model.RegisterRequestModel
 import com.example.zapp_taxi_driver.mvvm.register.view_model.RegisterViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.launch
 
 class RegisterActivity : BaseActivity() {
@@ -35,6 +41,7 @@ class RegisterActivity : BaseActivity() {
     private lateinit var viewModel: RegisterViewModel
     private var image :String ? = ""
     private var photoUri : Uri? = null
+    private var isFromFuelType = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.viewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
@@ -48,8 +55,6 @@ class RegisterActivity : BaseActivity() {
 
     private fun initializeFields() {
         viewModel.registerObj.strLanguage = "English"
-        viewModel.registerObj.strVehicleType = "MINI"
-        viewModel.registerObj.strFuelType = "Petrol"
     }
 
 
@@ -69,6 +74,34 @@ class RegisterActivity : BaseActivity() {
                      }
                  }
              }
+
+        viewModel.mutVehicleTypeResponse.observe(this) {
+            hideProgressDialog()
+            lifecycleScope.launch {
+                if (it != null) {
+                    if (it.code == "200") {
+                        viewModel.vehicleTypeResponse = it
+                        viewModel.commonSelectionModel.clear()
+                        viewModel.vehicleTypeResponse?.data?.forEach {
+                            viewModel.commonSelectionModel.add(
+                                CommonSelectionModel(
+                                    name = it?.name ?: "",
+                                    fuel_type = it?.fuel_type ?: "",
+                                    isSelected = false,
+                                    id = it?.id ?: ""
+                                )
+                            )
+                        }
+                        showSelectionDialog()
+
+                    } else {
+                        binding.root.showSnackBar(getString(R.string.error_message))
+                    }
+                } else {
+                    binding.root.showSnackBar(getString(R.string.error_message))
+                }
+            }
+        }
 
          }
 
@@ -106,6 +139,7 @@ class RegisterActivity : BaseActivity() {
             viewModel.registerObj.imageType = Enums.RegisterImageType.PROFILE
             Dialogs.showImagePickerDialog(this@RegisterActivity, imagePickerDialogInterFace, isFileEnabled = false)
         }
+
         binding.btnDriverLicense.setOnClickListener {
             viewModel.registerObj.imageType = Enums.RegisterImageType.LICENSE
             Dialogs.showImagePickerDialog(this@RegisterActivity, imagePickerDialogInterFace, isFileEnabled = false)
@@ -133,6 +167,15 @@ class RegisterActivity : BaseActivity() {
                 binding.edtPassword.setSelection(binding.edtPassword.text?.length ?: 0)
                 binding.ivPasswordEye.setImageDrawable(ContextCompat.getDrawable(this@RegisterActivity, R.drawable.ic_eye_closed))
             }
+        }
+
+        binding.edtVehicleType.setOnClickListener{
+            isFromFuelType = false
+            callVehicleTypeApi()
+        }
+        binding.edtFuelType.setOnClickListener {
+            isFromFuelType = true
+            callFuelTypeApi()
         }
     }
 
@@ -262,6 +305,53 @@ class RegisterActivity : BaseActivity() {
 
                 )
             )
+        }
+
+    }
+
+
+    private fun callVehicleTypeApi() {
+        isInternetEnabled {
+            showProgressDialog()
+            viewModel.vehicleTypeApi(
+                model = RegisterRequestModel()
+            )
+        }
+    }
+    private fun callFuelTypeApi() {
+        isInternetEnabled {
+            showProgressDialog()
+            viewModel.fuelTypeApi(
+                model = RegisterRequestModel()
+            )
+        }
+    }
+
+    private fun showSelectionDialog(){
+        val bottomSheetFragment = CommonSelectionBottomSheetFragment()
+        val bundle = Bundle()
+        bundle.putSerializable("CommonSelectionObj", CommonSelectionObj(
+            commonSelectionList = viewModel.commonSelectionModel,
+            isFromFuelType = isFromFuelType,
+            title = getString(R.string.label_vehicle_type
+            ))
+        )
+        bottomSheetFragment.arguments = bundle
+        val behavior =
+            (bottomSheetFragment.view?.parent as? View)?.let { BottomSheetBehavior.from(it) }
+        behavior?.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+        bottomSheetFragment.commonClick = object : CommonInterfaceClickEvent {
+            override fun onItemClick(type: String, position: Int) {
+                if (isFromFuelType){
+                    viewModel.registerObj.strFuelType = viewModel.vehicleTypeResponse?.data?.get(position)?.fuel_type.toString()
+                    binding.edtFuelType.setText(viewModel.vehicleTypeResponse?.data?.get(position)?.fuel_type.toString())
+                }else {
+                    viewModel.registerObj.strVehicleType = viewModel.vehicleTypeResponse?.data?.get(position)?.name.toString()
+                    binding.edtVehicleType.setText(viewModel.vehicleTypeResponse?.data?.get(position)?.name.toString())
+                }
+
+            }
         }
     }
 }

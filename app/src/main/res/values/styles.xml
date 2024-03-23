@@ -78,6 +78,14 @@
         <item name="android:paddingBottom">@dimen/_1sdp</item>
     </style>
 
+    <style name="OutlinedCommonButtonStyle" parent="CommonButtonStyle">
+        <item name="android:background">@drawable/outlined_btn_bg</item>
+    </style>
+
+    <style name="SquareCommonButtonStyle" parent="CommonButtonStyle">
+        <item name="android:background">@drawable/square_btn_bg</item>
+    </style>
+
 
     <style name="CommonInputEditTextStyle" parent="@android:style/TextAppearance">
         <item name="android:textSize">@dimen/edtTextSize</item>
@@ -475,6 +483,17 @@
         <item name="itemIconSize">@dimen/_15sdp</item>
         <item name="titleMarginStart">@dimen/_12sdp</item>
         <item name="titleTextColor">@color/border_color_grey</item>
+    </style>
+
+    <style name="nav_list_main">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_55sdp</item>
+        <item name="android:fontFamily">@font/font_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:paddingStart">@dimen/screen_margin</item>
+
     </style>
 
 </resources>

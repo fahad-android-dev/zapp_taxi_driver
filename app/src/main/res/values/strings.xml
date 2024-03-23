@@ -207,5 +207,20 @@
     <string name="please_enter_your_vehicle_type">"Please enter your vehicle type "</string>
     <string name="please_enter_your_fuel_type">Please enter your fuel type</string>
     <string name="please_enter_your_vehicle_engine_capacity">Please enter your vehicle engine capacity</string>
+    <string name="label_home">Home</string>
+    <string name="label_my_profile">My Profile</string>
+    <string name="label_my_bookings">My Bookings</string>
+    <string name="label_my_earnings">My Earnings(₹)</string>
+    <string name="label_language_setting">Language Setting</string>
+    <string name="label_driver_report">Driver Report</string>
+    <string name="label_share_app">Share App</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_sign_out_message">Sign Out?</string>
+    <string name="label_are_you_sure_want_to_sign_out">Are you sure want to sign out?</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="label_total_booking">Total Booking</string>
+    <string name="label_today_s_booking">Today\'s Booking</string>
+    <string name="label_today_s_earning">Today\'s Earning</string>
 
 </resources>

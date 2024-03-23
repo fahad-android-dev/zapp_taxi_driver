@@ -33,7 +33,7 @@ object Dialogs {
         activity: Context,
         title: String = "",
         msg: String = "",
-        img: Int = 0,
+        imgLottie: Int = 0,
         yesBtn: String,
         noBtn: String,
         singleBtn: Boolean = false,
@@ -72,8 +72,6 @@ object Dialogs {
             binding.txtAlertMessage.text = msg
             binding.btnAlertNegative.text = noBtn
             binding.btnAlertPositive.text = yesBtn
-            binding.ivAlert.isVisible = img != 0
-            binding.ivAlert.setImageResource(img)
 
             binding.btnAlertNegative.visibility = if (singleBtn) View.GONE else View.VISIBLE
             binding.btnAlertNegative.setOnClickListener {

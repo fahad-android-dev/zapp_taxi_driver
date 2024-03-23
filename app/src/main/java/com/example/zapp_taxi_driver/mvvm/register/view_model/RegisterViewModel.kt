@@ -8,7 +8,9 @@ import com.example.zapp_taxi_driver.data_source.api_manager.WebServices
 import com.example.zapp_taxi_driver.helper.Enums
 import com.example.zapp_taxi_driver.helper.helper_model.AddImageModel
 import com.example.zapp_taxi_driver.helper.helper_model.UserResponseModel
+import com.example.zapp_taxi_driver.mvvm.common.model.CommonSelectionModel
 import com.example.zapp_taxi_driver.mvvm.register.model.RegisterRequestModel
+import com.example.zapp_taxi_driver.mvvm.register.model.VehicleTypeResponseModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -37,6 +39,9 @@ data class RegisterObj(
 class RegisterViewModel : ViewModel() {
 
     var registerObj = RegisterObj()
+
+    var commonSelectionModel = arrayListOf<CommonSelectionModel?>()
+    var vehicleTypeResponse : VehicleTypeResponseModel ?= null
 
     var arrListImages = arrayListOf<AddImageModel>()
 
@@ -78,6 +83,40 @@ class RegisterViewModel : ViewModel() {
                     }
             }catch (e:Exception){
                 mutRegisterResponse.postValue(UserResponseModel(code = "0" , message = e.localizedMessage))
+            }
+        }
+    }
+
+    val mutVehicleTypeResponse : MutableLiveData<VehicleTypeResponseModel?> = MutableLiveData()
+    fun vehicleTypeApi(model : RegisterRequestModel){
+        viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            mutVehicleTypeResponse.postValue(VehicleTypeResponseModel(code = "0" , message = throwable.localizedMessage))
+        }){
+            try {
+                ApiRepository
+                    .apiPost<RegisterRequestModel, VehicleTypeResponseModel>(WebServices.getVehicleTypeUrl() , model)
+                    .collectLatest {
+                        mutVehicleTypeResponse.postValue(it)
+                    }
+            }catch (e:Exception){
+                mutVehicleTypeResponse.postValue(VehicleTypeResponseModel(code = "0" , message = e.localizedMessage))
+            }
+        }
+    }
+    fun fuelTypeApi(model : RegisterRequestModel){
+        viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            mutVehicleTypeResponse.postValue(VehicleTypeResponseModel(code = "0" , message = throwable.localizedMessage))
+        }){
+            try {
+                ApiRepository
+                    .apiPost<RegisterRequestModel, VehicleTypeResponseModel>(WebServices.getFuelTypeUrl() , model)
+                    .collectLatest {
+                        mutVehicleTypeResponse.postValue(it)
+                    }
+            }catch (e:Exception){
+                mutVehicleTypeResponse.postValue(VehicleTypeResponseModel(code = "0" , message = e.localizedMessage))
             }
         }
     }

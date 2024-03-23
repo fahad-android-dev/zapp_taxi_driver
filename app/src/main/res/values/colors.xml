@@ -8,6 +8,7 @@
     <color name="secondary_color">#9A9A9A</color>
     <color name="secondary_dark_color">#1F211F</color>
     <color name="secondary_light_color">#FFF9F9</color>
+    <color name="primary_blue_color">#037b93</color>
 
     <!--todo App color configuration here -->
     <color name="app_bg_color">@color/color_white</color>
@@ -19,6 +20,7 @@
     <color name="color_black">#FF000000</color>
     <color name="color_white">#FFFFFFFF</color>
     <color name="color_grey">#DCDCDC</color>
+    <color name="color_yellow">#FFFF00</color>
     <color name="color_transparent">#00000000</color>
 
     <!--todo Background Colors colors add here `keep variables name start with "bg_color_"`-->
@@ -30,6 +32,7 @@
     <color name="btn_txt_color_primary">#141414</color>
     <color name="btn_bg_color_secondary">#141414</color>
     <color name="btn_txt_color_secondary">#141414</color>
+    <color name="btn_bg_color_blue">#159fb9</color>
 
     <!--todo tabs colors add here `keep variables name start with "tab_"` -->
     <color name="tab_bg_color_selected">@color/tint_color_selected</color>

@@ -1,85 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/AppBackGroundStyleLight"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primary_blue_color"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.core.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/_30sdp"
+            android:background="@color/primary_blue_color"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@color/primary_blue_color"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_90sdp"
+                    android:background="@color/primary_dark_color" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:src="@drawable/person"
+                    android:visibility="visible"
+                    app:civ_border_color="@color/color_white"
+                    app:civ_border_width="@dimen/_2sdp" />
+
+                <TextView
+                    android:id="@+id/header_txt"
+                    style="@style/TextStyleCenterMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imgLogo"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+
+            </RelativeLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conHome"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
 
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/conNavHead"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                <ImageView
+                    android:id="@+id/ivStatement"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_home"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/ivNavHeadImage"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        android:layout_marginVertical="@dimen/_20sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:background="@color/color_black"
-                        android:src="@drawable/ic_launcher_foreground"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore=" " />
-
-                    <TextView
-                        android:id="@+id/txtNavHeadTitle"
-                        style="@style/fontRegular"
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_12sdp"
-                        android:gravity="start"
-                        android:includeFontPadding="false"
-                        android:lineSpacingExtra="@dimen/_2sdp"
-                        android:maxLines="2"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="true"
-                        android:textColor="@color/txt_color_primary"
-                        android:textSize="@dimen/btn_text_size"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivNavHeadImage"
-                        app:layout_constraintStart_toEndOf="@+id/ivNavHeadImage"
-                        app:layout_constraintTop_toTopOf="@+id/ivNavHeadImage"
-                        android:text="MR. USER NAME" />
-
-
-                    <ImageView
-                        android:id="@+id/ivBackArrow"
-                        android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_18sdp"
-                        android:layout_marginEnd="@dimen/screen_margin"
-                        android:src="@drawable/ic_right_arrow"
-                        app:layout_constraintBottom_toBottomOf="@+id/txtNavHeadTitle"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/txtNavHeadTitle"
-                        />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/txtStatementTitle"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_home"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivStatement"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conMyProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtProfile"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_my_profile"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivProfile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conMyBookings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivMyBookings"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_my_booking"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtMyBookings"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_my_bookings"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivMyBookings"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conMyEarnings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivMyEarnings"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_rupee"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtMyEarnings"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_my_earnings"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivMyEarnings"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conLanguageSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivLanguageSetting"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_language"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtLanguageSetting"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_language_setting"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivLanguageSetting"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conDriverReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivDriverReport"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_timer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtDriverReport"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_driver_report"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivDriverReport"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conShareApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivShareApp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_share"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtShareApp"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_share_app"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivShareApp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/ivLogout"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:background="@drawable/bg_circle_white"
+                    android:backgroundTint="@color/color_yellow"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_logout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtLogout"
+                    style="@style/TextStyleStartMedium"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/screen_margin"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textColor="@color/txt_color_white"
+                    android:text="@string/label_logout"
+                    android:textSize="@dimen/btn_text_size"
+                    app:layout_constraintStart_toEndOf="@+id/ivLogout"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

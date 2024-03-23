@@ -1,5 +1,7 @@
 package com.example.zapp_taxi_driver.mvvm.home.view
 
+import AppNavigation.navigateToHome
+import AppNavigation.navigateToLogin
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -15,10 +17,13 @@ import com.example.zapp_taxi_driver.databinding.ActivityHomeBinding
 import com.example.zapp_taxi_driver.databinding.NavHeaderLayoutBinding
 import com.example.zapp_taxi_driver.helper.BaseActivity
 import com.example.zapp_taxi_driver.helper.Constants
+import com.example.zapp_taxi_driver.helper.Dialogs
 import com.example.zapp_taxi_driver.helper.Extensions.hideKeyboard
 import com.example.zapp_taxi_driver.helper.Extensions.printLog
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
+import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
 import com.example.zapp_taxi_driver.helper.ShareDetails.initSaveDeepLink
+import com.example.zapp_taxi_driver.helper.interfaces.AlertDialogInterface
 import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import com.pushwoosh.Pushwoosh
 import org.json.JSONObject
@@ -57,7 +62,7 @@ class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        initBottomTabs()
+
         initLeftNavMenuDrawer()
         initializeFields()
         initializeToolbar()
@@ -81,15 +86,30 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun onLeftNavMenuDrawerClickListener() {
-        headerLayout.ivBackArrow.setOnClickListener {
-            binding.rootLayout.closeDrawers()
+        headerLayout.conHome.setOnClickListener {
+            navigateToHome {}
+        }
+
+        headerLayout.conLogout.setOnClickListener {
+            Dialogs.showCustomAlert(
+                activity= this@HomeActivity,
+                title= getString(R.string.label_sign_out_message),
+                msg = getString(R.string.label_are_you_sure_want_to_sign_out),
+                yesBtn= getString(R.string.label_yes),
+                noBtn= getString(R.string.label_no),
+                alertDialogInterface = object : AlertDialogInterface {
+                    override fun onYesClick() {
+                        setUserDataResponse(null)
+                        navigateToLogin(true)
+                        finishAffinity()
+                    }
+
+                    override fun onNoClick() {}
+                },
+            )
         }
     }
 
-    private fun initBottomTabs() {
-        binding.bottomNavigationView.setupWithNavController(navController)
-        onBottomNavigationItemClickListener()
-    }
 
     override fun onNavigateUp(): Boolean {
         return navController.navigateUp(
@@ -109,7 +129,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun initializeToolbar() {
-        toolbarInit(getString(R.string.app_name))
+        toolbarInit()
     }
 
     private fun initializeFields() {
@@ -144,39 +164,10 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-    private fun toolbarInit(title: String){
-        setUpToolbar(binding.layoutToolbar,
-            title = title,
-            isBackArrow = false,
-            toolbarClickListener = object : CommonInterfaceClickEvent {
-                override fun onToolBarListener(type: String) {
-                    if (type == Constants.TOOLBAR_ICON_ONE){
-
-                    }
-                    if (type == Constants.TOOLBAR_ICON_TWO){
-
-                    }
-                }
-            }
-        )
-    }
-
-    private fun onBottomNavigationItemClickListener() {
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            currentMenuItemId = destination.id
-            when (destination.id) {
-                R.id.navigation_home -> {
-                    toolbarInit(getString(R.string.app_name))
-                }
-
-                else -> {
-                    setUpToolbar(binding.layoutToolbar, title = getString(R.string.app_name), isBackArrow = false)
-                }
-            }
+    private fun toolbarInit(){
+        binding.layoutHomeToolbar.imgDrawer.setOnClickListener {
+            binding.rootLayout.open()
         }
+
     }
 }

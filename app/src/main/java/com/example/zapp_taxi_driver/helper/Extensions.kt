@@ -14,6 +14,7 @@ import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
@@ -733,6 +734,13 @@ object Extensions {
             Pair(args[index] , args[index].transitionName)
         }
         return ActivityOptionsCompat.makeSceneTransitionAnimation(this, *pairs)
+    }
+
+    fun <T : Serializable?> Bundle.getSerializableViaArgument(key: String, m_class: Class<T>): T {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+            this.getSerializable(key, m_class)!!
+        else
+            this.getSerializable(key) as T
     }
 
 }

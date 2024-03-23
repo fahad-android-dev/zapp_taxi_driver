@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@drawable/bg_home_toolbar">
+
+
+            <LinearLayout
+                android:id="@+id/lnrToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginStart="10dp"
+                android:background="@color/bg_color_fully_transparent">
+
+                <ImageView
+                    android:id="@+id/imgDrawer"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_menu" />
+
+                <ImageView
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="15dp"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo_trans"
+                    android:visibility="visible"
+                    app:tint="@color/color_white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

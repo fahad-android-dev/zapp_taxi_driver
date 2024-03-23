@@ -18,8 +18,8 @@
             tools:context=".mvvm.home.view.HomeActivity">
 
             <include
-                android:id="@+id/layoutToolbar"
-                layout="@layout/layout_toolbar" />
+                android:id="@+id/layoutHomeToolbar"
+                layout="@layout/layout_home_toolbar" />
 
             <fragment
                 android:id="@+id/nav_host_fragment"
@@ -28,26 +28,13 @@
                 android:layout_height="0dp"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph"
-                app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+                android:layout_marginTop="@dimen/_minus20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutToolbar"
+                app:layout_constraintTop_toBottomOf="@id/layoutHomeToolbar"
                 tools:ignore="FragmentTagUsage" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
-                android:layout_width="0dp"
-                style="@style/BottomNavigationViewStyle"
-                android:layout_height="@dimen/nav_bar_height"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
-                android:background="?android:attr/windowBackground"
-                app:elevation="@dimen/_3sdp"
-                app:labelVisibilityMode="labeled"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:menu="@menu/bottom_tab_menu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
