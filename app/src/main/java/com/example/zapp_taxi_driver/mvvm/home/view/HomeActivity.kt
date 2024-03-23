@@ -9,6 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
@@ -16,7 +17,6 @@ import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.ActivityHomeBinding
 import com.example.zapp_taxi_driver.databinding.NavHeaderLayoutBinding
 import com.example.zapp_taxi_driver.helper.BaseActivity
-import com.example.zapp_taxi_driver.helper.Constants
 import com.example.zapp_taxi_driver.helper.Dialogs
 import com.example.zapp_taxi_driver.helper.Extensions.hideKeyboard
 import com.example.zapp_taxi_driver.helper.Extensions.printLog
@@ -24,7 +24,6 @@ import com.example.zapp_taxi_driver.helper.Global.showSnackBar
 import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
 import com.example.zapp_taxi_driver.helper.ShareDetails.initSaveDeepLink
 import com.example.zapp_taxi_driver.helper.interfaces.AlertDialogInterface
-import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import com.pushwoosh.Pushwoosh
 import org.json.JSONObject
 
@@ -65,7 +64,6 @@ class HomeActivity : BaseActivity() {
 
         initLeftNavMenuDrawer()
         initializeFields()
-        initializeToolbar()
         onClickListeners()
     }
 
@@ -90,6 +88,22 @@ class HomeActivity : BaseActivity() {
             navigateToHome {}
         }
 
+        headerLayout.conShareApp.setOnClickListener {
+            binding.rootLayout.closeDrawers()
+            val sendIntent = Intent()
+            sendIntent.setAction(Intent.ACTION_SEND)
+            sendIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                """Hey check out this ${getString(R.string.app_name)} cab driver mobile app
+
+Get Cabs bookings for local,rental and outstation travels.
+
+ Available in Playstore Now : https://play.google.com/store/apps/details?id=$packageName"""
+            )
+            sendIntent.setType("text/plain")
+            startActivity(sendIntent)
+        }
+
         headerLayout.conLogout.setOnClickListener {
             Dialogs.showCustomAlert(
                 activity= this@HomeActivity,
@@ -107,6 +121,11 @@ class HomeActivity : BaseActivity() {
                     override fun onNoClick() {}
                 },
             )
+        }
+
+        headerLayout.conDriverReport.setOnClickListener {
+            binding.rootLayout.closeDrawers()
+            findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_navigation_driver_report)
         }
     }
 
@@ -126,10 +145,6 @@ class HomeActivity : BaseActivity() {
 
     private fun onClickListeners() {
 
-    }
-
-    private fun initializeToolbar() {
-        toolbarInit()
     }
 
     private fun initializeFields() {
@@ -164,10 +179,8 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    private fun toolbarInit(){
-        binding.layoutHomeToolbar.imgDrawer.setOnClickListener {
-            binding.rootLayout.open()
-        }
-
+    fun openMainDrawers() {
+        binding.rootLayout.open()
     }
+
 }

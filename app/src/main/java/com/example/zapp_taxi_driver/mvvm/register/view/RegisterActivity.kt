@@ -55,6 +55,7 @@ class RegisterActivity : BaseActivity() {
 
     private fun initializeFields() {
         viewModel.registerObj.strLanguage = "English"
+        binding.layoutToolbar.root.background = ContextCompat.getDrawable(this@RegisterActivity,R.color.color_white)
     }
 
 

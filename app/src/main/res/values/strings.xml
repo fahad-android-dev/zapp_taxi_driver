@@ -222,5 +222,8 @@
     <string name="label_total_booking">Total Booking</string>
     <string name="label_today_s_booking">Today\'s Booking</string>
     <string name="label_today_s_earning">Today\'s Earning</string>
+    <string name="label_driver_name">Driver Name:</string>
+    <string name="label_available_time">Available Time:</string>
+    <string name="label_date">Date:</string>
 
 </resources>

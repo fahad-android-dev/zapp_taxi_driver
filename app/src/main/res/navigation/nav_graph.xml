@@ -10,4 +10,16 @@
         android:name="com.example.zapp_taxi_driver.mvvm.home.view.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/navigation_driver_report"
+        android:name="com.example.zapp_taxi_driver.mvvm.driver_report.view.DriverReportFragment"
+        tools:layout="@layout/fragment_driver_report" />
+    <action
+        android:id="@+id/action_to_navigation_driver_report"
+        app:destination="@id/navigation_driver_report"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_right"
+        app:popExitAnim="@anim/slide_out_right"
+        />
+
 </navigation>

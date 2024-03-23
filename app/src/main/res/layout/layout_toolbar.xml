@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tool_bar_height"
-        android:background="@color/color_white"
+        android:background="@color/primary_dark_color"
         app:contentInsetEnd="0dp"
         app:contentInsetStart="0dp"
         android:animateLayoutChanges="true"
@@ -30,20 +30,21 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
+                android:layout_marginStart="@dimen/_6sdp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/ivArrow"
-                    android:layout_width="@dimen/_13sdp"
-                    android:layout_height="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:clickable="false"
                     android:focusable="false"
-                    android:rotation="180"
+                    android:padding="@dimen/_7sdp"
+                    android:background="@drawable/bg_circle_white"
                     app:tint="@color/color_black"
-                    app:srcCompat="@drawable/ic_right_arrow"
+                    app:srcCompat="@drawable/new_back_arrow"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
