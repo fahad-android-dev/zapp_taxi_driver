@@ -30,6 +30,7 @@ import com.example.zapp_taxi_driver.helper.PrefUtils.getUserId
 import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
 import com.example.zapp_taxi_driver.helper.ShareDetails.initSaveDeepLink
 import com.example.zapp_taxi_driver.helper.interfaces.AlertDialogInterface
+import com.example.zapp_taxi_driver.helper.location.LocationService
 import com.example.zapp_taxi_driver.mvvm.home.model.UserProfileRequestModel
 import com.example.zapp_taxi_driver.mvvm.home.view_model.HomeViewModel
 import com.example.zapp_taxi_driver.mvvm.login.view_model.LoginViewModel
@@ -164,6 +165,13 @@ Get Cabs bookings for local,rental and outstation travels.
     }
 
     private fun initializeFields() {
+        ifLocationPermissionIsEnabled{
+            Intent(applicationContext, LocationService::class.java).apply {
+                action = LocationService.ACTION_START
+                startService(this)
+            }
+        }
+
         callUserProfileApi()
         getIntentData()
         onBackPressedDispatcher.addCallback(this@HomeActivity, object : OnBackPressedCallback(true){

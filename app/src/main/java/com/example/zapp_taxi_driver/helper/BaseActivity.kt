@@ -207,4 +207,30 @@ open class BaseActivity : AppCompatActivity() {
         }
         layoutToolbarBinding?.txtToolbarHeader?.text = title
     }
+
+    fun ifLocationPermissionIsEnabled(block: () -> Unit) {
+        if (Permission.isLocationCanAccess(this)) {
+            block()
+        } else {
+            Permission.requestLocationPermission(this)
+            onRequestPermissionsResult = object : OnRequestPermissionsResult {
+                override fun onResultPermissionResult(
+                    requestCode: Int,
+                    permissions: Array<out String>,
+                    grantResults: IntArray
+                ) {
+                    if (requestCode == Permission.LOCATION_REQUEST_CODE) {
+                        if (Permission.isLocationCanAccess(this@BaseActivity)) {
+                            block()
+                        } else {
+                            Permission.showAlertToEnablePermission(
+                                this@BaseActivity,
+                                strTitle = resources.getString(R.string.enable_location_to_continue)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

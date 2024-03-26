@@ -45,4 +45,8 @@ class HomeFragment : BaseFragment() {
             mActivity.openMainDrawers()
         }
     }
+
+    private fun initializeFields(){
+
+    }
 }
