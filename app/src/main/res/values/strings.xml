@@ -239,5 +239,11 @@
     <string name="taxi_permit_expiry_date">Taxi Permit Expiry Date</string>
     <string name="label_taxi_insurance_documents">Taxi Insurance Documents</string>
     <string name="taxi_insurance_expiry_date">Taxi Insurance Expiry Date</string>
+    <string name="way_to_customer">Way to Customer</string>
+    <string name="call_customer">Call Customer</string>
+    <string name="stop_ride">Stop Ride</string>
+    <string name="reject_ride">REJECT RIDE</string>
+    <string name="start_ride">Start Ride</string>
+    <string name="accept_booking">Accept Booking</string>
 
 </resources>

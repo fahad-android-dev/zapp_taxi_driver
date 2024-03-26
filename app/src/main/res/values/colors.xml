@@ -22,6 +22,9 @@
     <color name="color_grey">#DCDCDC</color>
     <color name="color_yellow">#FFFF00</color>
     <color name="color_transparent">#00000000</color>
+    <color name="color_text_blue">#03A9F4</color>
+    <color name="color_text_orange">#F15A24</color>
+    <color name="color_purple_light">#7056BD</color>
 
     <!--todo Background Colors colors add here `keep variables name start with "bg_color_"`-->
     <color name="bg_color_fully_transparent">@color/color_transparent</color>
