@@ -8,6 +8,8 @@ import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,20 +21,28 @@ import com.example.zapp_taxi_driver.databinding.NavHeaderLayoutBinding
 import com.example.zapp_taxi_driver.helper.BaseActivity
 import com.example.zapp_taxi_driver.helper.Dialogs
 import com.example.zapp_taxi_driver.helper.Extensions.hideKeyboard
+import com.example.zapp_taxi_driver.helper.Extensions.isInternetEnabled
 import com.example.zapp_taxi_driver.helper.Extensions.printLog
+import com.example.zapp_taxi_driver.helper.Global.loadImagesUsingCoil
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
+import com.example.zapp_taxi_driver.helper.PrefUtils.getUserDataResponse
+import com.example.zapp_taxi_driver.helper.PrefUtils.getUserId
 import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
 import com.example.zapp_taxi_driver.helper.ShareDetails.initSaveDeepLink
 import com.example.zapp_taxi_driver.helper.interfaces.AlertDialogInterface
+import com.example.zapp_taxi_driver.mvvm.home.model.UserProfileRequestModel
+import com.example.zapp_taxi_driver.mvvm.home.view_model.HomeViewModel
+import com.example.zapp_taxi_driver.mvvm.login.view_model.LoginViewModel
 import com.pushwoosh.Pushwoosh
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class HomeActivity : BaseActivity() {
 
     lateinit var binding: ActivityHomeBinding
+    private lateinit var viewModel: HomeViewModel
     private lateinit var headerLayout: NavHeaderLayoutBinding
     private var isBackPressed: Long = 0
-    private var currentMenuItemId: Int? = 0
 
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -60,11 +70,13 @@ class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
         initLeftNavMenuDrawer()
         initializeFields()
         onClickListeners()
+        initObserver()
     }
 
     private fun initLeftNavMenuDrawer() {
@@ -127,6 +139,10 @@ Get Cabs bookings for local,rental and outstation travels.
             binding.rootLayout.closeDrawers()
             findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_navigation_driver_report)
         }
+        headerLayout.conMyProfile.setOnClickListener {
+            binding.rootLayout.closeDrawers()
+            findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_navigation_my_profile)
+        }
     }
 
 
@@ -148,6 +164,7 @@ Get Cabs bookings for local,rental and outstation travels.
     }
 
     private fun initializeFields() {
+        callUserProfileApi()
         getIntentData()
         onBackPressedDispatcher.addCallback(this@HomeActivity, object : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
@@ -175,12 +192,42 @@ Get Cabs bookings for local,rental and outstation travels.
                 isBackPressed = System.currentTimeMillis()
             }
         } else {
-            finish()
+            navController.popBackStack()
         }
     }
 
     fun openMainDrawers() {
         binding.rootLayout.open()
+    }
+
+     private fun initObserver() {
+             viewModel.mutUserProfileResponse.observe(this) {
+                    hideProgressDialog()
+                     lifecycleScope.launch {
+                         if (it != null) {
+                             if (it.code == 200) {
+                                 headerLayout.imgLogo.loadImagesUsingCoil("http://68.183.92.60/Zap_taxi/assets/Upload/driver_detail/${it.data?.profile_image}")
+                             } else {
+                                 binding.root.showSnackBar(getString(R.string.error_message))
+                             }
+                         } else {
+                             binding.root.showSnackBar(getString(R.string.error_message))
+                         }
+                     }
+             }
+
+         }
+
+    private fun callUserProfileApi(){
+        isInternetEnabled{
+            viewModel.userProfileApi(
+                model = UserProfileRequestModel(
+                    id = getUserId(),
+                    AuthToken = getUserDataResponse()?.AuthToken
+                )
+
+            )
+        }
     }
 
 }

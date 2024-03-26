@@ -20,6 +20,8 @@ object WebServices {
     const val VehicleTypeWs = "User/get_vehicle_type"
     const val FuelTypeWs = "User/get_fuel_type"
     const val DriverDetailsWs = "Driver/DriverActiveDetails"
+    const val UpdateLocationWs = "Driver/update_location"
+    const val UserProfileWs = "User/userprofile"
 
     fun getLoginUrl() : String {
         return LoginWs
@@ -37,6 +39,12 @@ object WebServices {
     }
     fun getDriverDetailsUrl() : String {
         return DriverDetailsWs
+    }
+    fun getUpdateLocationUrl() : String {
+        return UpdateLocationWs
+    }
+    fun getUserProfileUrl() : String {
+        return UserProfileWs
     }
 
 

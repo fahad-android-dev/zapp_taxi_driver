@@ -225,5 +225,19 @@
     <string name="label_driver_name">Driver Name:</string>
     <string name="label_available_time">Available Time:</string>
     <string name="label_date">Date:</string>
+    <string name="label_enable_settings_msg">Please enable ALL permissions from app settings.</string>
+    <string name="label_basic_details">Basic Details</string>
+    <string name="label_current_vehicle_details">Current Vehicle Details</string>
+    <string name="label_owner_s_name">Owner\'s Name</string>
+    <string name="label_owner_s_mobile_number">Owner\'s Mobile Number</string>
+    <string name="label_vehicle_doucments">Vehicle Doucments</string>
+    <string name="label_driving_license_documents">Driving License Documents</string>
+    <string name="label_driver_license_expiry_date">Driver License Expiry Date</string>
+    <string name="label_rc_documents">RC Documents</string>
+    <string name="rc_expiry_date">RC Expiry Date</string>
+    <string name="taxi_permit_documents">Taxi Permit Documents</string>
+    <string name="taxi_permit_expiry_date">Taxi Permit Expiry Date</string>
+    <string name="label_taxi_insurance_documents">Taxi Insurance Documents</string>
+    <string name="taxi_insurance_expiry_date">Taxi Insurance Expiry Date</string>
 
 </resources>

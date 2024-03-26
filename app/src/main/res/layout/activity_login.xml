@@ -101,6 +101,8 @@
                         android:layout_marginHorizontal="@dimen/large_screen_margin"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:hint="@string/label_enter_the_phone_no"
+                        android:maxLength="10"
+                        android:digits="0123456789"
                         android:inputType="phone"
                         android:text="@={viewModel.objLogin.strPhone}"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -128,6 +130,7 @@
                         android:layout_height="@dimen/edt_end_icon_height"
                         android:layout_marginEnd="@dimen/icon_end_margin"
                         android:src="@drawable/ic_eye"
+                        android:elevation="@dimen/_4sdp"
                         app:layout_constraintBottom_toBottomOf="@+id/edtPassword"
                         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
                         app:layout_constraintTop_toTopOf="@+id/edtPassword" />
@@ -142,6 +145,7 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:text="@string/label_forget_password"
                         android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/txt_color_blue"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 

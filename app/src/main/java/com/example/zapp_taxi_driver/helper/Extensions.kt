@@ -35,6 +35,7 @@ import android.widget.TextView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.core.util.Pair
@@ -47,6 +48,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.LayoutEmptyBinding
+import com.example.zapp_taxi_driver.databinding.LayoutToolbarBinding
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
 import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import com.example.zapp_taxi_driver.helper.helper_model.AddImageModel
@@ -742,5 +744,19 @@ object Extensions {
         else
             this.getSerializable(key) as T
     }
+
+    @SuppressLint("NewApi")
+    fun NestedScrollView.setTransparentToolbarOnScroll(binding:LayoutToolbarBinding,value: String? = "", view:View,activity: Activity){
+        setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            if (scrollY >= view.top) {
+                binding.toolbar.setBackgroundColor(ContextCompat.getColor(activity, R.color.primary_dark_color))
+                binding.txtToolbarHeader.text = value
+            } else {
+                binding.toolbar.setBackgroundColor(ContextCompat.getColor(activity, R.color.color_transparent))
+                binding.txtToolbarHeader.text = ""
+            }
+        }
+    }
+
 
 }

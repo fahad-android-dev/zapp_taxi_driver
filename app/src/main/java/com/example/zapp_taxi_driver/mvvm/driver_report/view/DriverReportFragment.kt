@@ -12,9 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.FragmentDriverReportBinding
 import com.example.zapp_taxi_driver.helper.BaseActivity
+import com.example.zapp_taxi_driver.helper.BaseFragment
 import com.example.zapp_taxi_driver.helper.Extensions.isInternetEnabled
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
 import com.example.zapp_taxi_driver.helper.PrefUtils.getUserId
+import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import com.example.zapp_taxi_driver.mvvm.common.view_model.CommonSelectionBottomSheetViewModel
 import com.example.zapp_taxi_driver.mvvm.driver_report.model.DriverDetailDataModel
 import com.example.zapp_taxi_driver.mvvm.driver_report.model.DriverReportRequestModel
@@ -23,7 +25,7 @@ import com.example.zapp_taxi_driver.mvvm.login.model.LoginRequestModel
 import kotlinx.coroutines.launch
 import java.util.ArrayList
 
-class DriverReportFragment : Fragment() {
+class DriverReportFragment : BaseFragment() {
     private lateinit var binding : FragmentDriverReportBinding
     private lateinit var viewModel : DriverReportViewModel
     private lateinit var mActivity: BaseActivity
@@ -50,6 +52,7 @@ class DriverReportFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeToolbar()
         initializeFields()
         initObserver()
         onClickListeners()
@@ -60,10 +63,23 @@ class DriverReportFragment : Fragment() {
         callDriverReportApi()
     }
 
+    private fun initializeToolbar() {
+        setUpToolbar(
+            binding.layoutToolbar,
+            navController = findNavController(),
+            title = getString(R.string.label_driver_report),
+            toolbarClickListener = object : CommonInterfaceClickEvent {
+                override fun onToolBarListener(type: String) {
+                    when (type) {
+
+                    }
+                }
+            }
+        )
+    }
+
     private fun onClickListeners(){
-        binding.layoutToolbar.linBackArrow.setOnClickListener {
-           findNavController().popBackStack()
-        }
+
     }
 
      private fun initObserver() {

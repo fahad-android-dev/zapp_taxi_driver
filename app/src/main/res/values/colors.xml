@@ -48,6 +48,7 @@
     <color name="tint_color_selected">@color/color_black </color>
     <color name="tint_color_unselected">#9A9A9A</color>
     <color name="tint_color_grey">#f9f9f9</color>
+    <color name="tint_profile">#f6f6f6</color>
 
     <!--todo App text colors  colors add here `keep variables name start with "txt_color_"` -->
     <color name="txt_color_white">@color/color_white</color>

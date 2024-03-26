@@ -59,36 +59,14 @@
                 android:gravity="center"
                 android:textAlignment="center"
                 android:maxLines="1"
-                android:textAllCaps="true"
-                android:textColor="@color/txt_color_primary"
+                android:includeFontPadding="false"
+                android:textColor="@color/txt_color_white"
                 android:textSize="@dimen/toolbar_header_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imgToolbarHeader"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="match_parent"
-                android:layout_marginVertical="@dimen/_5sdp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txtToolbarLanguage"
-                style="@style/fontRegularRev"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:gravity="center"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/conIconOne"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/conIconOne"
@@ -150,14 +128,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-            <View
-                android:id="@+id/viewBottomLineToolbar"
-                style="@style/DividerLineStyle"
-                android:background="@color/divider_line_color_grey"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 </layout>

@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.zapp_taxi_driver.mvvm.profile.view_model.ProfileViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".mvvm.profile.view.MyProfileFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/tint_profile"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_180sdp"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:id="@+id/txtBasicDetails"
+                        style="@style/TextStyleStartMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:text="@string/label_basic_details"
+                        android:textSize="@dimen/big_text_size" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/square_btn_bg"
+                        android:backgroundTint="@color/color_white"
+                        android:elevation="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilName"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtName"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:hint="@string/label_name"
+                                android:text="@={viewModel.profileObj.strName}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilEmail"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilName">
+
+                            <EditText
+                                android:id="@+id/edtEmail"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:hint="@string/hint_email_id"
+                                android:inputType="textEmailAddress"
+                                android:text="@={viewModel.profileObj.strEmail}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilMobile"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilEmail">
+
+                            <EditText
+                                android:id="@+id/edtMobile"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:hint="@string/label_mobile_number"
+                                android:inputType="number"
+                                android:maxLength="10"
+                                android:text="@={viewModel.profileObj.strMobile}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtLanguage"
+                        style="@style/TextStyleStartMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/label_language"
+                        android:textSize="@dimen/big_text_size"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/square_btn_bg"
+                        android:backgroundTint="@color/color_white"
+                        android:elevation="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilLanguage"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtLanguage"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:drawableEnd="@drawable/ic_right_arrow"
+                                android:focusable="false"
+                                android:text="@={viewModel.profileObj.strLanguage}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtCurrentVehicleDetails"
+                        style="@style/TextStyleStartMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/label_current_vehicle_details"
+                        android:textSize="@dimen/big_text_size"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/square_btn_bg"
+                        android:backgroundTint="@color/color_white"
+                        android:elevation="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilRegistrationNo"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtRegistrationNo"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strRegistrationNo}"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/label_registration_no_vehicle_no" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilOwnerName"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilRegistrationNo">
+
+                            <EditText
+                                android:id="@+id/edtOwnerName"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strOwnerName}"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/label_owner_s_name" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilOwnerMobile"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilOwnerName">
+
+                            <EditText
+                                android:id="@+id/edtOwnerMobile"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strOwnerMobile}"
+                                android:hint="@string/label_owner_s_mobile_number" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtVehicleDetails"
+                        style="@style/TextStyleStartMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/label_vehicle_details"
+                        android:textSize="@dimen/big_text_size"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/square_btn_bg"
+                        android:backgroundTint="@color/color_white"
+                        android:elevation="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilManufacturer"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtManufacturer"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strManufacturer}"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/label_manufacturer" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilModel"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilManufacturer">
+
+                            <EditText
+                                android:id="@+id/edtModel"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strModel}"
+                                android:hint="@string/label_model" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilSeatingCapacity"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilModel">
+
+                            <EditText
+                                android:id="@+id/edtSeatingCapacity"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/label_seating_capacity"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strSeating}"
+                                android:inputType="number"
+                                android:maxLength="2" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilVehicleType"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilSeatingCapacity">
+
+                            <EditText
+                                android:id="@+id/edtVehicleType"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:text="@={viewModel.profileObj.strVehicleType}"
+                                android:hint="@string/label_vehicle_type" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtFuelDetails"
+                        style="@style/TextStyleStartMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/label_fuel_type"
+                        android:textSize="@dimen/big_text_size"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/square_btn_bg"
+                        android:backgroundTint="@color/color_white"
+                        android:elevation="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilFuelType"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <EditText
+                                android:id="@+id/edtFuelType"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:text="@={viewModel.profileObj.strFuelType}"
+                                android:hint="@string/label_fuel_type" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilEngineCapacity"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/ilFuelType">
+
+                            <EditText
+                                android:id="@+id/edtEngineCapacity"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strEngineCapacity}"
+                                android:hint="@string/label_engine_capacity"
+                                android:inputType="number" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtVehicleDocuments"
+                        style="@style/TextStyleStartMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="@string/label_vehicle_doucments"
+                        android:textSize="@dimen/big_text_size"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/square_btn_bg"
+                        android:backgroundTint="@color/color_white"
+                        android:elevation="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <TextView
+                            android:id="@+id/txtLicense"
+                            style="@style/TextStyleStartRegular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:text="@string/label_driving_license_documents"
+                            android:textSize="@dimen/medium_text_size"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivLicense"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginStart="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:src="@drawable/person"
+                            android:visibility="visible"
+                            app:civ_border_color="@color/color_white"
+                            app:civ_border_width="@dimen/_2sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtLicense" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilLicense"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/ivLicense"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivLicense"
+                            app:layout_constraintTop_toTopOf="@+id/ivLicense">
+
+                            <EditText
+                                android:id="@+id/edtLicense"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:text="@={viewModel.profileObj.strLicense}"
+                                android:hint="@string/label_driver_license_expiry_date" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/txtRC"
+                            style="@style/TextStyleStartRegular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:text="@string/label_rc_documents"
+                            android:textSize="@dimen/medium_text_size"
+                            app:layout_constraintTop_toBottomOf="@+id/ivLicense" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivRC"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginStart="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:src="@drawable/person"
+                            android:visibility="visible"
+                            app:civ_border_color="@color/color_white"
+                            app:civ_border_width="@dimen/_2sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtRC" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilRC"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/ivRC"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivRC"
+                            app:layout_constraintTop_toTopOf="@+id/ivRC">
+
+                            <EditText
+                                android:id="@+id/edtRc"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:text="@={viewModel.profileObj.strRegistrationImage}"
+                                android:hint="@string/rc_expiry_date" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/txtTaxiPermit"
+                            style="@style/TextStyleStartRegular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:text="@string/taxi_permit_documents"
+                            android:textSize="@dimen/medium_text_size"
+                            app:layout_constraintTop_toBottomOf="@+id/ivRC" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivTaxiPermit"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginStart="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:src="@drawable/person"
+                            android:visibility="visible"
+                            app:civ_border_color="@color/color_white"
+                            app:civ_border_width="@dimen/_2sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTaxiPermit" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilTaxiPermit"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/ivTaxiPermit"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivTaxiPermit"
+                            app:layout_constraintTop_toTopOf="@+id/ivTaxiPermit">
+
+                            <EditText
+                                android:id="@+id/edtTaxiPermit"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strPermit}"
+                                android:focusable="false"
+                                android:hint="@string/taxi_permit_expiry_date" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/txtTaxiInsurance"
+                            style="@style/TextStyleStartRegular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:text="@string/label_taxi_insurance_documents"
+                            android:textSize="@dimen/medium_text_size"
+                            app:layout_constraintTop_toBottomOf="@+id/ivTaxiPermit" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/ivTaxiInsurance"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginStart="@dimen/screen_margin"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:src="@drawable/person"
+                            android:visibility="visible"
+                            app:civ_border_color="@color/color_white"
+                            app:civ_border_width="@dimen/_2sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTaxiInsurance" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ilTaxiInsurance"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/screen_margin"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="@+id/ivTaxiInsurance"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivTaxiInsurance"
+                            app:layout_constraintTop_toTopOf="@+id/ivTaxiInsurance">
+
+                            <EditText
+                                android:id="@+id/edtTaxiInsurance"
+                                style="@style/OutLinedEditTextStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:text="@={viewModel.profileObj.strInsurance}"
+                                android:focusable="false"
+                                android:hint="@string/taxi_insurance_expiry_date" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/layoutToolbar"
+            layout="@layout/layout_toolbar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

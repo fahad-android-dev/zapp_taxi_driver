@@ -2,29 +2,27 @@ package com.example.zapp_taxi_driver.mvvm.login.view
 
 import AppNavigation.navigateToHome
 import AppNavigation.navigateToRegister
+import android.Manifest
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.zapp_taxi_driver.mvvm.login.model.LoginRequestModel
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.ActivityLoginBinding
 import com.example.zapp_taxi_driver.helper.*
 import com.example.zapp_taxi_driver.helper.Extensions.isInternetEnabled
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
-import com.example.zapp_taxi_driver.helper.PrefUtils.getUserRememberData
 import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
-import com.example.zapp_taxi_driver.helper.PrefUtils.setUserRememberData
-import com.example.zapp_taxi_driver.helper.helper_model.UserRememberDataModel
-
+import com.example.zapp_taxi_driver.mvvm.login.model.LoginRequestModel
 import com.example.zapp_taxi_driver.mvvm.login.view_model.LoginViewModel
 import kotlinx.coroutines.launch
 
-class LoginActivity : SocialRegisterActivity() {
+class LoginActivity : RuntimePermissionsActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
+    private val REQUEST_PERMISSIONS = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
@@ -36,7 +34,21 @@ class LoginActivity : SocialRegisterActivity() {
         initObserver()
     }
 
+    override fun onPermissionsGranted(requestCode: Int) {
+
+    }
+
     private fun initializeFields() {
+        super@LoginActivity.requestAppPermissions(
+            arrayOf(
+                Manifest.permission.READ_CONTACTS,
+                Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+            ), R.string.label_enable_settings_msg, REQUEST_PERMISSIONS
+        )
+
+
     }
 
     private fun initObserver() {

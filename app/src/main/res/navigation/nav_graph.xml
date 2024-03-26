@@ -22,4 +22,16 @@
         app:popExitAnim="@anim/slide_out_right"
         />
 
+    <fragment
+        android:id="@+id/navigation_my_profile"
+        android:name="com.example.zapp_taxi_driver.mvvm.profile.view.MyProfileFragment"
+        tools:layout="@layout/fragment_my_profile" />
+    <action
+        android:id="@+id/action_to_navigation_my_profile"
+        app:destination="@id/navigation_my_profile"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_right"
+        app:popExitAnim="@anim/slide_out_right"
+        />
+
 </navigation>
