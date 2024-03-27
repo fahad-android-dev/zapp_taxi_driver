@@ -2,16 +2,15 @@ package com.example.zapp_taxi_driver.mvvm.home.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.FragmentHomeBinding
-import com.example.zapp_taxi_driver.helper.BaseActivity
 import com.example.zapp_taxi_driver.helper.BaseFragment
 import com.example.zapp_taxi_driver.helper.Extensions
+import com.example.zapp_taxi_driver.helper.PrefUtils.isUserLoggedIn
 import com.example.zapp_taxi_driver.helper.location.LocationService
 
 
@@ -68,8 +67,12 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initializeFields(){
-        if (Extensions.isServiceRunning("location",mActivity)){
-            binding.switchButton.isChecked
+        Extensions.handler(1000) {
+            println("here is service running ${Extensions.isForegroundServiceRunning(mActivity)}")
+            if (Extensions.isForegroundServiceRunning(mActivity)){
+                binding.switchButton.isChecked = true
+            }
         }
+
     }
 }

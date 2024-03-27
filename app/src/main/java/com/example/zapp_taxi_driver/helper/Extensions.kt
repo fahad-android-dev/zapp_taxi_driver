@@ -761,22 +761,21 @@ object Extensions {
     }
 
 
-    fun isServiceRunning(serviceName: String, activity: Activity): Boolean {
-        var serviceRunning = false
-        val am = activity.getSystemService(ACTIVITY_SERVICE) as ActivityManager
-        val l = am.getRunningServices(50)
-        val i: Iterator<ActivityManager.RunningServiceInfo> = l.iterator()
-        while (i.hasNext()) {
-            val runningServiceInfo = i
-                .next()
-            if (runningServiceInfo.service.className == serviceName) {
-                serviceRunning = true
-                if (runningServiceInfo.foreground) {
-                    //service run in foreground
+    fun isForegroundServiceRunning(context: Context): Boolean {
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val runningServices = activityManager.getRunningServices(Integer.MAX_VALUE)
+
+        for (serviceInfo in runningServices) {
+            if (serviceInfo.foreground) {
+                // Check if the service is your foreground service by comparing serviceInfo.service.className
+                // with the class name of your foreground service.
+                // For example, if your foreground service class name is MyForegroundService:
+                if (serviceInfo.service.className == "com.example.zapp_taxi_driver.helper.location.LocationService") {
+                    return true
                 }
             }
         }
-        return serviceRunning
+        return false
     }
 
 
