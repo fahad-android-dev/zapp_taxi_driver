@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.FragmentHomeBinding
 import com.example.zapp_taxi_driver.helper.BaseFragment
 import com.example.zapp_taxi_driver.helper.Extensions
-import com.example.zapp_taxi_driver.helper.PrefUtils.isUserLoggedIn
+import com.example.zapp_taxi_driver.helper.helper_model.LocationServiceResponseModel
+import com.example.zapp_taxi_driver.helper.interfaces.LocationServiceInterface
 import com.example.zapp_taxi_driver.helper.location.LocationService
 
 
@@ -38,6 +40,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         initializeFields()
         onClickListeners()
@@ -72,6 +76,10 @@ class HomeFragment : BaseFragment() {
             if (Extensions.isForegroundServiceRunning(mActivity)){
                 binding.switchButton.isChecked = true
             }
+        }
+
+        LocationService.locationResponse.observe(viewLifecycleOwner) {
+            binding.layoutRideDetails.root.isVisible = it.booking_local?.isEmpty() != true
         }
 
     }

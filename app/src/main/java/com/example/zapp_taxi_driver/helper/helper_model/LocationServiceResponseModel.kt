@@ -18,7 +18,7 @@ data class LocationServiceResponseModel(
     val vehicle_ride_type: String? = null,
     val vehicle_type: String? = null,
     val verified: Int? = null
-)
+):java.io.Serializable
 
 @Serializable
 data class Setting(
@@ -27,10 +27,10 @@ data class Setting(
     val d_soft_code: String? = null,
     val d_soft_code_message: String? = null,
     val d_soft_hard_type: String? = null
-)
+):java.io.Serializable
 
 @Serializable
 data class TodayDetails(
     val today_booking: String? = null,
     val total_amt: String? = null
-)
+):java.io.Serializable

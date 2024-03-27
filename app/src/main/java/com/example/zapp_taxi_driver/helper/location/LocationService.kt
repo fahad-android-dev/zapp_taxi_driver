@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.os.Binder
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.MutableLiveData
@@ -17,6 +18,8 @@ import com.example.zapp_taxi_driver.helper.PrefUtils.getUserId
 import com.example.zapp_taxi_driver.helper.helper_model.LocationServiceRequestModel
 import com.example.zapp_taxi_driver.helper.helper_model.LocationServiceResponseModel
 import com.example.zapp_taxi_driver.helper.helper_model.UserProfileResponseModel
+import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
+import com.example.zapp_taxi_driver.helper.interfaces.LocationServiceInterface
 import com.example.zapp_taxi_driver.mvvm.home.model.UserProfileRequestModel
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -24,6 +27,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
@@ -34,7 +38,7 @@ class LocationService: Service() {
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var locationClient: LocationClient
-    private val scope = CoroutineScope(Dispatchers.IO)
+    val mutLocationResponse : MutableLiveData<LocationServiceResponseModel?> = MutableLiveData()
 
     override fun onBind(p0: Intent?): IBinder? {
         return null
@@ -56,13 +60,12 @@ class LocationService: Service() {
         return super.onStartCommand(intent, flags, startId)
     }
 
+
     private fun start() {
         val notification = NotificationCompat.Builder(this, "location")
             .setContentTitle("Tracking location...")
             .setSmallIcon(R.mipmap.ic_launcher_new)
             .setOngoing(true)
-
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         locationClient
             .getLocationUpdates(20000L)
@@ -71,15 +74,13 @@ class LocationService: Service() {
                 val lat = location.latitude.toString()
                 val long = location.longitude.toString()
 
-                val mutLocationResponse : MutableLiveData<LocationServiceResponseModel?> = MutableLiveData()
-
                 val model = LocationServiceRequestModel(
                     id = applicationContext.getUserId(),
                     lat = lat, long = long, AuthToken = applicationContext.getUserDataResponse()?.AuthToken, fcm_no = null
 
                 )
 
-                scope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+                serviceScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
                     throwable.printStackTrace()
                     mutLocationResponse.postValue(LocationServiceResponseModel(code = 0 , message = throwable.localizedMessage))
                 }){
@@ -89,11 +90,13 @@ class LocationService: Service() {
                                 WebServices.getUpdateLocationUrl() , model)
                             .collectLatest {
                                 mutLocationResponse.postValue(it)
+                                locationResponse.postValue(it)
                             }
                     }catch (e:Exception){
                         mutLocationResponse.postValue(LocationServiceResponseModel(code = 0 , message = e.localizedMessage))
                     }
                 }
+
             }
             .launchIn(serviceScope)
 
@@ -113,5 +116,7 @@ class LocationService: Service() {
     companion object {
         const val ACTION_START = "ACTION_START"
         const val ACTION_STOP = "ACTION_STOP"
+        val locationResponse = MutableLiveData<LocationServiceResponseModel>()
     }
+
 }

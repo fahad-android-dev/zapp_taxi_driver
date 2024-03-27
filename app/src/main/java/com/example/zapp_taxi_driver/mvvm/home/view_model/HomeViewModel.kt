@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.zapp_taxi_driver.data_source.api_manager.ApiRepository
 import com.example.zapp_taxi_driver.data_source.api_manager.WebServices
+import com.example.zapp_taxi_driver.helper.helper_model.LocationServiceRequestModel
+import com.example.zapp_taxi_driver.helper.helper_model.LocationServiceResponseModel
 import com.example.zapp_taxi_driver.helper.helper_model.UserProfileResponseModel
 import com.example.zapp_taxi_driver.helper.helper_model.UserResponseModel
 import com.example.zapp_taxi_driver.mvvm.home.model.UserProfileRequestModel
@@ -33,4 +35,25 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+
+   /* fun updateLocationApi(model: LocationServiceRequestModel, onCompletion: ((response: LocationServiceResponseModel) -> Unit)? = null) {
+        viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            viewModelScope.launch(Dispatchers.Main) {
+                onCompletion?.invoke(LocationServiceResponseModel(code = 0, message = throwable.localizedMessage ?: ""))
+            }
+        }) {
+            try {
+                ApiRepository.apiPost<LocationServiceRequestModel, LocationServiceResponseModel>(WebServices.getUpdateLocationUrl(), model).collectLatest {
+                    viewModelScope.launch(Dispatchers.Main) {
+                        onCompletion?.invoke(it)
+                    }
+                }
+            } catch (e: Exception) {
+                viewModelScope.launch(Dispatchers.Main) {
+                    onCompletion?.invoke(LocationServiceResponseModel(code = 0, message = e.localizedMessage ?: ""))
+                }
+            }
+        }
+    }*/
 }

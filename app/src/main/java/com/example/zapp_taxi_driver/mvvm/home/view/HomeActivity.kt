@@ -2,12 +2,17 @@ package com.example.zapp_taxi_driver.mvvm.home.view
 
 import AppNavigation.navigateToHome
 import AppNavigation.navigateToLogin
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -44,6 +49,8 @@ class HomeActivity : BaseActivity() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var headerLayout: NavHeaderLayoutBinding
     private var isBackPressed: Long = 0
+    private lateinit var locationService: LocationService
+    private lateinit var serviceConnection: ServiceConnection
 
     private val navController by lazy {
         Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -224,7 +231,7 @@ Get Cabs bookings for local,rental and outstation travels.
                      }
              }
 
-         }
+     }
 
     private fun callUserProfileApi(){
         isInternetEnabled{
@@ -237,5 +244,6 @@ Get Cabs bookings for local,rental and outstation travels.
             )
         }
     }
+
 
 }
