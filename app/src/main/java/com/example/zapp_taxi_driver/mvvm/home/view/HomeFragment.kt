@@ -1,5 +1,6 @@
 package com.example.zapp_taxi_driver.mvvm.home.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.FragmentHomeBinding
 import com.example.zapp_taxi_driver.helper.BaseActivity
 import com.example.zapp_taxi_driver.helper.BaseFragment
+import com.example.zapp_taxi_driver.helper.Extensions
+import com.example.zapp_taxi_driver.helper.location.LocationService
 
 
 class HomeFragment : BaseFragment() {
@@ -37,6 +40,7 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeFields()
         onClickListeners()
     }
 
@@ -44,9 +48,28 @@ class HomeFragment : BaseFragment() {
         binding.layoutHomeToolbar.imgDrawer.setOnClickListener {
             mActivity.openMainDrawers()
         }
+        binding.switchButton.setOnCheckedChangeListener { view, isChecked ->
+            if (isChecked){
+                mActivity.ifLocationPermissionIsEnabled{
+                    Intent(mActivity.applicationContext, LocationService::class.java).apply {
+                        action = LocationService.ACTION_START
+                        mActivity.startService(this)
+                    }
+                }
+            }else {
+                mActivity.ifLocationPermissionIsEnabled{
+                    Intent(mActivity.applicationContext, LocationService::class.java).apply {
+                        action = LocationService.ACTION_START
+                        mActivity.stopService(this)
+                    }
+                }
+            }
+        }
     }
 
     private fun initializeFields(){
-
+        if (Extensions.isServiceRunning("location",mActivity)){
+            binding.switchButton.isChecked
+        }
     }
 }

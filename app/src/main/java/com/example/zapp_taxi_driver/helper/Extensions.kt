@@ -2,9 +2,11 @@ package com.example.zapp_taxi_driver.helper
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.ActivityManager
 import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Context.ACTIVITY_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -50,9 +52,9 @@ import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.LayoutEmptyBinding
 import com.example.zapp_taxi_driver.databinding.LayoutToolbarBinding
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
-import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import com.example.zapp_taxi_driver.helper.helper_model.AddImageModel
 import com.example.zapp_taxi_driver.helper.helper_model.CalenderDatesModel
+import com.example.zapp_taxi_driver.helper.interfaces.CommonInterfaceClickEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -61,7 +63,7 @@ import java.io.IOException
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 object Extensions {
 
@@ -756,6 +758,25 @@ object Extensions {
                 binding.txtToolbarHeader.text = ""
             }
         }
+    }
+
+
+    fun isServiceRunning(serviceName: String, activity: Activity): Boolean {
+        var serviceRunning = false
+        val am = activity.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+        val l = am.getRunningServices(50)
+        val i: Iterator<ActivityManager.RunningServiceInfo> = l.iterator()
+        while (i.hasNext()) {
+            val runningServiceInfo = i
+                .next()
+            if (runningServiceInfo.service.className == serviceName) {
+                serviceRunning = true
+                if (runningServiceInfo.foreground) {
+                    //service run in foreground
+                }
+            }
+        }
+        return serviceRunning
     }
 
 
