@@ -1,0 +1,221 @@
+<LinearLayout android:id="@+id/cvRideDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_3sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/shadow_background"
+    android:gravity="top"
+    android:orientation="vertical"
+    app:layout_constraintTop_toBottomOf="@+id/cvDetails"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDate"
+            style="@style/TextStyleCenterMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:padding="3dp"
+            android:text="date"
+            android:textColor="@color/color_text_blue"
+            android:textSize="@dimen/big_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/screen_margin"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Name"
+            android:textAllCaps="true"
+            android:textColor="@color/color_text_orange"
+            android:textSize="@dimen/big_text_size" />
+
+        <TextView
+            android:id="@+id/tvPaymentMode"
+            style="@style/TextStyleEndMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_weight="1"
+            android:text="Payment mode : cash"
+            android:textColor="@color/app_color_status_bar"
+            android:textSize="@dimen/medium_text_size" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="@dimen/screen_margin"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/app_color_status_bar" />
+
+    <include
+        android:id="@+id/layoutLocation"
+        android:layout_marginHorizontal="@dimen/screen_margin"
+        layout="@layout/location_view"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
+
+    <TextView
+        style="@style/TextStyleStartMedium"
+        android:id="@+id/tvRideStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_18ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvWayToCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_to_customer_location"
+                    app:tint="@color/app_color_status_bar" />
+
+                <TextView
+                    style="@style/TextStyleCenterRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/way_to_customer" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvCallCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_call_customer"
+                    app:tint="@color/app_color_status_bar" />
+
+                <TextView
+                    style="@style/TextStyleCenterRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/call_customer"
+                    />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginTop="-30dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/btnAcceptBooking"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:background="@drawable/circle_btn"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/accept_booking"
+            android:textColor="@color/color_white"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/btnStartRide"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/circle_btn"
+            android:padding="5dp"
+            android:text="@string/start_ride"
+            android:textColor="@color/color_white"
+            android:visibility="gone"
+            tools:ignore="ButtonStyle" />
+
+        <TextView
+            android:id="@+id/cancelRide"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:gravity="center"
+            android:background="@drawable/circle_btn"
+            android:text="@string/reject_ride"
+            android:textColor="@color/color_white" />
+
+        <TextView
+            android:id="@+id/btnStopRide"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/circle_btn"
+            android:text="@string/stop_ride"
+            android:textColor="@color/color_white"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>
