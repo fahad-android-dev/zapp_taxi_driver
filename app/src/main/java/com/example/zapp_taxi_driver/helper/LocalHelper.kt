@@ -11,7 +11,7 @@ object LocaleHelper {
 
     fun changeLanguage(context: Context) {
         if (context.getAppConfig()?.lang == "en") {
-            setLocale(context , "ar")
+            setLocale(context , "hi")
         } else {
             setLocale(context, "en")
         }

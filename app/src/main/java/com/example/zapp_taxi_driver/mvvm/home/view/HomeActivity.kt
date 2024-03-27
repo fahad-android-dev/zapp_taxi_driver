@@ -30,6 +30,7 @@ import com.example.zapp_taxi_driver.helper.Extensions.isInternetEnabled
 import com.example.zapp_taxi_driver.helper.Extensions.printLog
 import com.example.zapp_taxi_driver.helper.Global.loadImagesUsingCoil
 import com.example.zapp_taxi_driver.helper.Global.showSnackBar
+import com.example.zapp_taxi_driver.helper.LocaleHelper
 import com.example.zapp_taxi_driver.helper.PrefUtils.getUserDataResponse
 import com.example.zapp_taxi_driver.helper.PrefUtils.getUserId
 import com.example.zapp_taxi_driver.helper.PrefUtils.setUserDataResponse
@@ -136,6 +137,23 @@ Get Cabs bookings for local,rental and outstation travels.
                         setUserDataResponse(null)
                         navigateToLogin(true)
                         finishAffinity()
+                    }
+
+                    override fun onNoClick() {}
+                },
+            )
+        }
+        headerLayout.conLanguageSetting.setOnClickListener {
+            Dialogs.showCustomAlert(
+                activity= this@HomeActivity,
+                title= getString(R.string.change_language),
+                msg = getString(R.string.are_you_sure_you_want_to_change_langauge),
+                yesBtn= getString(R.string.label_yes),
+                noBtn= getString(R.string.label_no),
+                alertDialogInterface = object : AlertDialogInterface {
+                    override fun onYesClick() {
+                        LocaleHelper.changeLanguage(this@HomeActivity)
+                        navigateToHome{}
                     }
 
                     override fun onNoClick() {}

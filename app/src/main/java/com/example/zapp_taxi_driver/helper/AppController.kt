@@ -69,7 +69,7 @@ class AppController : Application() {
             if (Locale.getDefault().displayLanguage.equals("English", true)) {
                 LocaleHelper.setLocale(this, "en")
             } else {
-                LocaleHelper.setLocale(this, "ar")
+                LocaleHelper.setLocale(this, "hi")
             }
         } else {
             LocaleHelper.setLocale(this, getAppConfig()?.lang ?: "en")
@@ -95,7 +95,7 @@ class AppController : Application() {
 
     fun arabicLanguage() {
         val model = getAppConfig()
-        setAppConfig(AppConfigModel(lang = "ar", cartBadgeCount = model?.cartBadgeCount ?: ""))
+        setAppConfig(AppConfigModel(lang = "hi", cartBadgeCount = model?.cartBadgeCount ?: ""))
         setLocale()
     }
 

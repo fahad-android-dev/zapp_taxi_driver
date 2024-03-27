@@ -1,14 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Zap Driver</string>
-
-    <string name="pushwoosh_app_id_dev" translatable="false">add_app_id_(dev)_here</string>
-    <string name="pushwoosh_app_id_live" translatable="false">add_app_id_(live)_here</string>
-    <string name="pushwoosh_sender_id" translatable="false">add_sender_id_here</string>
-    <string name="pushwoosh_partner_id_live" translatable="false">pw-(add_app_id_(live)_here)</string>
-    <string name="pushwoosh_partner_id_dev" translatable="false">pw-(add_app_id_(dev)_here)</string>
-
-    <string name="google_map_key" translatable="false">add_google_map_key_here</string>
-
     <string name="text_enable">Enable</string>
     <string name="no">No</string>
     <string name="press_back_message">Press back once again to close app.</string>
@@ -245,7 +236,7 @@
     <string name="reject_ride">REJECT RIDE</string>
     <string name="start_ride">Start Ride</string>
     <string name="accept_booking">Accept Booking</string>
-    <string name="change_language">भाषा बदलें</string>
-    <string name="are_you_sure_you_want_to_change_langauge">क्या आप वाकई भाषा बदलना चाहते हैं?</string>
+    <string name="change_language">Change Language</string>
+    <string name="are_you_sure_you_want_to_change_langauge">Are you sure you want to change langauge</string>
 
 </resources>
