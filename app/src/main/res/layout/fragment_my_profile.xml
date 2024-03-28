@@ -33,6 +33,7 @@
                     android:layout_height="match_parent"
                     android:background="@color/tint_profile"
                     android:orientation="vertical"
+                    android:paddingBottom="@dimen/_20sdp"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView

@@ -238,5 +238,9 @@
     <string name="accept_booking">Accept Booking</string>
     <string name="change_language">Change Language</string>
     <string name="are_you_sure_you_want_to_change_langauge">Are you sure you want to change langauge</string>
+    <string name="booking_id_colon">Booking Id :</string>
+    <string name="label_booking_type_colon">"Booking Type : "</string>
+    <string name="no_bookings">No Bookings</string>
+    <string name="you_haven_t_completed_any_bookings_yet">You haven\'t completed any bookings yet</string>
 
 </resources>

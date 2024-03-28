@@ -22,6 +22,10 @@ object WebServices {
     const val DriverDetailsWs = "Driver/DriverActiveDetails"
     const val UpdateLocationWs = "Driver/update_location"
     const val UserProfileWs = "User/userprofile"
+    const val AcceptRideWs = "Driver/accept_ride"
+    const val CancelRideWs = "Driver/cancel_ride"
+    const val RejectRideWs = "Driver/reject_ride"
+    const val MyBookingsWs = "Driver/my_booking"
 
     fun getLoginUrl() : String {
         return LoginWs
@@ -45,6 +49,20 @@ object WebServices {
     }
     fun getUserProfileUrl() : String {
         return UserProfileWs
+    }
+
+    fun getAcceptRideUrl() : String {
+        return AcceptRideWs
+    }
+    fun getCancelRideUrl() : String {
+        return CancelRideWs
+    }
+
+    fun getRejectRideUrl() : String {
+        return RejectRideWs
+    }
+    fun getMyBookingUrl() : String {
+        return MyBookingsWs
     }
 
 

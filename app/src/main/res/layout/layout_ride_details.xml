@@ -198,6 +198,7 @@
 
         <TextView
             android:id="@+id/cancelRide"
+            style="@style/TextStyleCenterRegular"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="@dimen/_30sdp"
@@ -210,6 +211,7 @@
             android:id="@+id/btnStopRide"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            style="@style/TextStyleCenterRegular"
             android:layout_marginEnd="5dp"
             android:background="@drawable/circle_btn"
             android:text="@string/stop_ride"

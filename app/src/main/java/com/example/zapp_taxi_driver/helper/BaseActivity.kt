@@ -59,8 +59,6 @@ open class BaseActivity : AppCompatActivity() {
                     layoutInflater.inflate(R.layout.dialog_loading, null)
                 }
             }
-            val imageview: ImageView = v.findViewById(R.id.imgLoading)
-            //imageview.loadGifUsingCoil(this, R.drawable.loading_gif)
 
             progressDialog = Dialog(this, R.style.MyDialogTheme)
             progressDialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)

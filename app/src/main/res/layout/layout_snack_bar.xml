@@ -11,7 +11,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_2sdp"
         android:background="@drawable/black_rounded_corner_bg"
-        android:backgroundTint="@color/color_black">
+        android:backgroundTint="@color/primary_dark_color">
 
         <TextView
             android:id="@+id/txtSnackBarText"

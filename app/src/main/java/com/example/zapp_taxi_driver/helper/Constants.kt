@@ -31,7 +31,7 @@ object Constants {
 
     var SimpleTimeFormat = "HH:mm:ss"
     var SimpleDateFormat = "yyyy-MM-dd"
-    var SimpleDateTimeFormat = "yyyy-MM-dd HH:mm:ss"
+    var SimpleDateTimeFormat = "yyyy-MM-dd HH:mm aa"
     var ZONE_UTC = "utc"
     var SimpleTimeHourFormat = "hh:mm aa"
 

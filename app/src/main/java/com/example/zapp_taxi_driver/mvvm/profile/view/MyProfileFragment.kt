@@ -29,6 +29,7 @@ class MyProfileFragment : BaseFragment() {
     private lateinit var binding : FragmentMyProfileBinding
     private lateinit var viewModel : ProfileViewModel
     private lateinit var mActivity: BaseActivity
+    val url = "http://68.183.92.60/Zap_taxi/assets/Upload/driver_detail/"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,6 +97,12 @@ class MyProfileFragment : BaseFragment() {
                         binding.edtRc.setText(it.data?.rc_certificate_expiry ?: "")
                         binding.edtTaxiPermit.setText(it.data?.taxi_permit_expiry ?: "")
                         binding.edtTaxiInsurance.setText(it.data?.insurance_expiry_date ?: "")
+
+                        binding.ivLicense.loadImagesUsingCoil(url+it.data?.driving_license)
+                        binding.ivRC.loadImagesUsingCoil(url+it.data?.r_certificate)
+                        binding.ivTaxiPermit.loadImagesUsingCoil(url+it.data?.taxi_permit)
+                        binding.ivTaxiInsurance.loadImagesUsingCoil(url+it.data?.insurance_img)
+                        binding.imgDetails.loadImagesUsingCoil(url+it.data?.profile_image)
 
                     } else {
                         binding.root.showSnackBar(getString(R.string.error_message))

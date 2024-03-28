@@ -7,22 +7,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.FragmentHomeBinding
 import com.example.zapp_taxi_driver.helper.BaseFragment
 import com.example.zapp_taxi_driver.helper.Extensions
-import com.example.zapp_taxi_driver.helper.helper_model.LocationServiceResponseModel
-import com.example.zapp_taxi_driver.helper.interfaces.LocationServiceInterface
+import com.example.zapp_taxi_driver.helper.Extensions.isInternetEnabled
+import com.example.zapp_taxi_driver.helper.Global.showSnackBar
+import com.example.zapp_taxi_driver.helper.PrefUtils.getUserDataResponse
+import com.example.zapp_taxi_driver.helper.PrefUtils.getUserId
 import com.example.zapp_taxi_driver.helper.location.LocationService
+import com.example.zapp_taxi_driver.mvvm.home.model.AcceptRejectBookingRequestModel
+import com.example.zapp_taxi_driver.mvvm.home.view_model.HomeViewModel
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mActivity: HomeActivity
+    private lateinit var viewModel : HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as HomeActivity
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -45,6 +54,7 @@ class HomeFragment : BaseFragment() {
 
         initializeFields()
         onClickListeners()
+        initObserver()
     }
 
     private fun onClickListeners(){
@@ -68,6 +78,12 @@ class HomeFragment : BaseFragment() {
                 }
             }
         }
+        binding.layoutRideDetails.btnAcceptBooking.setOnClickListener {
+            callAcceptBookingApi()
+        }
+        /*binding.layoutRideDetails.btnAcceptBooking.setOnClickListener {
+            callRejectBookingApi()
+        }*/
     }
 
     private fun initializeFields(){
@@ -82,5 +98,62 @@ class HomeFragment : BaseFragment() {
             binding.layoutRideDetails.root.isVisible = it.booking_local?.isEmpty() != true
         }
 
+    }
+
+     private fun initObserver() {
+             viewModel.mutAcceptBookingResponse.observe(viewLifecycleOwner) {
+                     mActivity.hideProgressDialog()
+                     lifecycleScope.launch {
+                         if (it != null) {
+                             if (it.code == 200) {
+
+                             } else {
+                                 binding.root.showSnackBar(getString(R.string.error_message))
+                             }
+                         } else {
+                             binding.root.showSnackBar(getString(R.string.error_message))
+                         }
+                     }
+             }
+         viewModel.mutCancelBookingResponse.observe(viewLifecycleOwner) {
+             mActivity.hideProgressDialog()
+             lifecycleScope.launch {
+                 if (it != null) {
+                     if (it.code == 200) {
+
+                     } else {
+                         binding.root.showSnackBar(getString(R.string.error_message))
+                     }
+                 } else {
+                     binding.root.showSnackBar(getString(R.string.error_message))
+                 }
+             }
+         }
+
+         }
+
+    private fun  callAcceptBookingApi(){
+        context?.isInternetEnabled{
+            mActivity.showProgressDialog()
+            viewModel.acceptBookingApi(
+                model = AcceptRejectBookingRequestModel(
+                    id = context?.getUserId(),
+                    AuthToken = context?.getUserDataResponse()?.AuthToken,
+                    booking_id = null
+                )
+            )
+        }
+    }
+    private fun  callCancelBookingApi(){
+        context?.isInternetEnabled{
+            mActivity.showProgressDialog()
+            viewModel.cancelBookingApi(
+                model = AcceptRejectBookingRequestModel(
+                    id = context?.getUserId(),
+                    AuthToken = context?.getUserDataResponse()?.AuthToken,
+                    booking_id = null
+                )
+            )
+        }
     }
 }
