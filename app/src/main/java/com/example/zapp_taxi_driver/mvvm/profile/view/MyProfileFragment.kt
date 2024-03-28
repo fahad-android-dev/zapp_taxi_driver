@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.zapp_taxi_driver.R
 import com.example.zapp_taxi_driver.databinding.FragmentMyProfileBinding
 import com.example.zapp_taxi_driver.helper.BaseActivity
@@ -56,19 +57,31 @@ class MyProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initializeToolbar()
         initializeFields()
+        initializeToolbar()
+        onClickListeners()
         initObserver()
 
     }
 
     private fun initializeToolbar(){
         binding.layoutToolbar.toolbar.background = ContextCompat.getDrawable(mActivity, R.color.color_transparent)
-        binding.nestedScrollView.setTransparentToolbarOnScroll(activity = mActivity, view = binding.txtBasicDetails, binding = binding.layoutToolbar)
+        binding.nestedScrollView.setTransparentToolbarOnScroll(
+            activity = mActivity,
+            view = binding.txtBasicDetails,
+            binding = binding.layoutToolbar,
+            value = viewModel.profileObj.strName
+        )
     }
 
     private fun initializeFields(){
         callUserProfileApi()
+    }
+
+    private fun onClickListeners(){
+        binding.layoutToolbar.linBackArrow.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun initObserver() {
@@ -77,7 +90,7 @@ class MyProfileFragment : BaseFragment() {
             lifecycleScope.launch {
                 if (it != null) {
                     if (it.code == 200) {
-                        viewModel.profileObj.strEmail = it.data?.email_id ?: ""
+                        viewModel.profileObj.strName = it.data?.firstname ?: ""
                         binding.edtName.setText(it.data?.firstname ?: "")
                         binding.edtEmail.setText(it.data?.email_id ?: "")
                         binding.edtMobile.setText(it.data?.mobile ?: "")

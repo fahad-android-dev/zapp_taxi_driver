@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layoutToolbar"
+            layout="@layout/layout_toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layoutToolbar">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/lnr_bookingroot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shadow_background"
+                            android:orientation="vertical">
+
+
+                            <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:foregroundGravity="center"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="10dp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="10dp">
+
+                                    <include
+                                        android:id="@+id/layoutLocation"
+                                        layout="@layout/location_view" />
+
+                                </RelativeLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/color_grey" />
+
+                            <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:foreground="?attr/selectableItemBackground"
+                                android:foregroundGravity="center"
+                                app:cardBackgroundColor="@color/cardview_light_background"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/lnrName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_margin="10dp"
+                                            android:background="@drawable/ic_booking_user" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleCenterMedium"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:gravity="center"
+                                            android:padding="3dp"
+                                            android:text=":"
+                                            android:textAllCaps="true"
+                                            android:textSize="20sp" />
+
+
+                                        <TextView
+                                            android:id="@+id/txtName"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleCenterMedium"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:gravity="center"
+                                            android:padding="3dp"
+                                            android:text="Name"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/color_text_orange"
+                                            android:textSize="20sp" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/color_grey" />
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_margin="10dp"
+                                            android:background="@drawable/ic_calendar" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleCenterMedium"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:gravity="center"
+                                            android:padding="3dp"
+                                            android:text=":"
+                                            android:textAllCaps="true"
+                                            android:textSize="20sp" />
+
+                                        <TextView
+                                            android:id="@+id/txtDate"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleCenterMedium"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:gravity="center"
+                                            android:padding="3dp"
+                                            android:text="date"
+                                            android:textColor="@color/primary_dark_color"
+                                            android:textSize="16sp" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/color_grey" />
+
+                                    <LinearLayout
+                                        android:id="@+id/lnrContacts"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_margin="10dp"
+                                            android:background="@drawable/ic_phone" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleCenterMedium"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="5dp"
+                                            android:gravity="center"
+                                            android:padding="3dp"
+                                            android:text=":"
+                                            android:textAllCaps="true"
+                                            android:textSize="20sp" />
+
+                                        <TextView
+                                            android:id="@+id/txtContact"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleStartMedium"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="10dp"
+                                            android:gravity="center_vertical"
+                                            android:padding="3dp"
+                                            android:text="Contact"
+                                            android:textColor="#000"
+                                            android:textSize="16sp" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/color_grey" />
+
+
+                                    <LinearLayout
+                                        android:id="@+id/rltvamt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_margin="10dp"
+                                            android:background="@drawable/ic_cash"
+                                            android:backgroundTint="@color/color_black" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            style="@style/TextStyleStartMedium"
+                                            android:layout_marginEnd="10dp"
+                                            android:text="Ruppes :"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <ImageView
+                                            android:id="@+id/imgRupees"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_marginTop="10dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_rupee"
+                                            app:tint="@color/green" />
+
+                                        <TextView
+                                            android:id="@+id/txtAmount"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="10dp"
+                                            style="@style/TextStyleStartMedium"
+                                            android:text="..."
+                                            android:textColor="@color/green"
+                                            android:textSize="20sp" />
+
+                                        <ImageView
+                                            android:id="@+id/imgInfo"
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginTop="15dp"
+                                            android:layout_toRightOf="@+id/txtamount"
+                                            android:visibility="invisible" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/color_grey" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_margin="10dp"
+                                            android:background="@drawable/car_taxi" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="25dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginRight="5dp"
+                                            style="@style/TextStyleStartMedium"
+                                            android:text="@string/label_status"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/txtStatus"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/rltvLoc"
+                                            style="@style/TextStyleStartMedium"
+                                            android:layout_margin="10dp"
+                                            android:text="Complete"
+                                            android:textColor="#000"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold"
+                                            android:visibility="visible" />
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/color_grey" />
+
+                                    <LinearLayout
+                                        android:id="@+id/relPayment"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
+                                            android:layout_margin="10dp"
+                                            android:background="@drawable/wallet"
+                                            android:backgroundTint="@color/color_black" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="25dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginEnd="5dp"
+                                            style="@style/TextStyleStartMedium"
+                                            android:text="@string/label_status"
+                                            android:textColor="@color/primary_dark_color"
+                                            android:textSize="18sp" />
+
+                                        <TextView
+                                            android:id="@+id/txtPaymentStatus"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/TextStyleStartMedium"
+                                            android:layout_margin="10dp"
+                                            android:text="Paid in Cash"
+                                            android:textColor="@color/green"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+
+
+                        <!--  <Button
+                              android:id="@+id/btn_cash"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_below="@+id/lnr_bookingroot"
+                              android:layout_gravity="center"
+                              android:layout_marginLeft="5dp"
+                              android:layout_marginTop="10dp"
+                              android:layout_marginBottom="10dp"
+                              android:background="@drawable/button_primary"
+                              android:padding="10dp"
+                              android:text="@string/recieved_payment_in_cash"
+                              android:textColor="#ffffff"
+                              android:visibility="visible" />
+
+                      </LinearLayout>
+
+                      <LinearLayout
+                          android:id="@+id/lnr_fare"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/lnr_bookingroot"
+                          android:layout_alignParentBottom="true"
+                          android:layout_margin="15dp"
+                          android:background="@drawable/border_login"
+                          android:orientation="vertical"
+                          android:padding="5dp"
+                          android:visibility="gone">
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:background="@drawable/shadow_background">
+
+                              <RelativeLayout
+                                  android:id="@+id/rlt_fare"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="3dp">
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txtfare"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_alignParentLeft="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginTop="10dp"
+                                      android:text="@string/total_distance"
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txt_distance"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginLeft="5dp"
+                                      android:layout_marginTop="10dp"
+                                      android:layout_toRightOf="@+id/txtfare"
+                                      android:gravity="right"
+                                      android:text="Base Fare"
+                                      android:textColor="@color/blue"
+                                      android:textSize="14sp" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txtrate"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txt_distance"
+                                      android:layout_alignParentLeft="true"
+                                      android:layout_centerHorizontal="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginTop="10dp"
+                                      android:text="@string/trip_time"
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txt_trip_time"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txt_distance"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginLeft="5dp"
+                                      android:layout_marginTop="10dp"
+                                      android:layout_toRightOf="@+id/txtrate"
+                                      android:gravity="right"
+                                      android:text="Base Fare"
+                                      android:textColor="@color/blue"
+                                      android:textSize="14sp" />
+
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txtrydfare"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txtrate"
+                                      android:layout_alignParentLeft="true"
+                                      android:layout_centerHorizontal="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginTop="10dp"
+                                      android:text="Fare "
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp"
+                                      android:visibility="gone" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txt_fare"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txtrate"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginLeft="5dp"
+                                      android:layout_marginTop="10dp"
+                                      android:layout_toRightOf="@+id/txtrydfare"
+                                      android:gravity="right"
+                                      android:text="Base Fare"
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp"
+                                      android:visibility="gone" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txtrategst"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txt_fare"
+                                      android:layout_alignParentLeft="true"
+                                      android:layout_centerHorizontal="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginTop="10dp"
+                                      android:text="GST @ 5% "
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp"
+                                      android:visibility="gone" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txt_gst"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txt_fare"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginLeft="5dp"
+                                      android:layout_marginTop="10dp"
+                                      android:layout_toRightOf="@+id/txtrategst"
+                                      android:gravity="right"
+                                      android:text="Base Fare"
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp"
+                                      android:visibility="gone" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txtridetaime"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txtrategst"
+                                      android:layout_alignParentLeft="true"
+                                      android:layout_centerHorizontal="true"
+                                      android:layout_gravity="center_vertical"
+                                      android:layout_marginTop="10dp"
+                                      android:layout_marginBottom="10dp"
+                                      android:text="@string/total_fare"
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp"
+                                      android:visibility="gone" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txt_total_fare"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_below="@+id/txt_gst"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_marginLeft="5dp"
+                                      android:layout_marginTop="10dp"
+                                      android:layout_marginBottom="10dp"
+                                      android:layout_toRightOf="@+id/txtridetaime"
+                                      android:gravity="right"
+                                      android:text="Base Fare"
+                                      android:textColor="@color/black"
+                                      android:textSize="14sp"
+                                      android:visibility="gone" />
+
+
+                              </RelativeLayout>
+                          </LinearLayout>
+                      </LinearLayout>
+
+                      <LinearLayout
+                          android:id="@+id/lnr_booking"
+                          android:layout_width="match_parent"
+                          android:layout_height="40dp"
+                          android:layout_below="@+id/lnr_fare"
+                          android:layout_alignParentBottom="true"
+                          android:layout_marginLeft="5dp"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginRight="5dp"
+                          android:visibility="visible">
+
+                          <Button
+                              android:id="@+id/btnAcceptBooking"
+                              android:layout_width="0dp"
+                              android:layout_height="match_parent"
+                              android:layout_marginRight="5dp"
+                              android:layout_weight="1"
+                              android:background="@drawable/button_bg"
+                              android:text="@string/accept_booking"
+                              android:textColor="@color/white"
+                              android:visibility="gone" />
+
+                          <Button
+                              android:id="@+id/btn_start_ride"
+                              android:layout_width="0dp"
+                              android:layout_height="match_parent"
+                              android:layout_marginLeft="5dp"
+                              android:layout_weight="1"
+                              android:background="@drawable/button_bgaccent"
+                              android:text="@string/start_ride"
+                              android:textColor="@color/white"
+                              android:visibility="visible" />
+
+                          <Button
+                              android:id="@+id/cancelride"
+                              android:layout_width="0dp"
+                              android:layout_height="match_parent"
+                              android:layout_marginLeft="5dp"
+                              android:layout_weight="1"
+                              android:background="@drawable/button_primary"
+                              android:text="@string/cancel_ride"
+                              android:textColor="#ffffff" />
+
+                          <Button
+                              android:id="@+id/btn_Stop_ride"
+                              android:layout_width="0dp"
+                              android:layout_height="match_parent"
+                              android:layout_marginRight="5dp"
+                              android:layout_weight="1"
+                              android:background="@drawable/button_primary"
+                              android:text="@string/stop_ride"
+                              android:textColor="#ffffff"
+                              android:visibility="gone" />
+                      </LinearLayout>
+
+                      <LinearLayout
+                          android:id="@+id/lnr"
+                          android:layout_width="match_parent"
+                          android:layout_height="70dp"
+                          android:layout_below="@+id/lnr_booking"
+                          android:layout_alignParentBottom="true"
+                          android:layout_margin="20dp"
+                          android:background="@drawable/border"
+                          android:gravity="center"
+                          android:visibility="gone">
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_gravity="center"
+                              android:background="@drawable/shadow_background"
+                              android:gravity="center">
+
+
+                              <LinearLayout
+                                  android:id="@+id/lnr_call_customer"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginRight="20dp"
+                                  android:gravity="center"
+                                  android:orientation="vertical">
+
+                                  <ImageView
+                                      android:layout_width="24dp"
+                                      android:layout_height="24dp"
+                                      android:src="@drawable/call_icon"
+                                      android:tint="@color/colorAccent" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_gravity="center"
+                                      android:layout_marginTop="10dp"
+                                      android:text="@string/call_customer"
+                                      android:textColor="#000"
+                                      android:textSize="12dp" />
+                              </LinearLayout>
+
+                              <View
+                                  android:layout_width="3dp"
+                                  android:layout_height="match_parent"
+                                  android:layout_margin="5dp"
+                                  android:background="@color/color_grey" />
+
+                              <LinearLayout
+                                  android:id="@+id/lnr_way_to_customer"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginLeft="20dp"
+                                  android:gravity="center"
+                                  android:orientation="vertical">
+
+                                  <ImageView
+                                      android:layout_width="24dp"
+                                      android:layout_height="24dp"
+                                      android:src="@drawable/way_cust"
+                                      android:tint="@color/colorAccent" />
+
+                                  <com.driver_app.zap_taxi.Utils.FontText
+                                      android:id="@+id/txt_wayto"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_alignParentRight="true"
+                                      android:layout_gravity="center"
+                                      android:layout_marginTop="10dp"
+                                      android:text="@string/way_to_customer"
+                                      android:textColor="#000"
+                                      android:textSize="12dp" />
+
+                              </LinearLayout>
+
+                          </LinearLayout>
+
+                      </LinearLayout>-->
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

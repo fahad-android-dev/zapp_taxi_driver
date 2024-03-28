@@ -251,5 +251,7 @@
     <string name="label_booking_type_colon">"Booking Type : "</string>
     <string name="no_bookings">No Bookings</string>
     <string name="you_haven_t_completed_any_bookings_yet">You haven\'t completed any bookings yet</string>
+    <string name="label_status">Status :</string>
+    <string name="ride_details">Ride Details</string>
 
 </resources>

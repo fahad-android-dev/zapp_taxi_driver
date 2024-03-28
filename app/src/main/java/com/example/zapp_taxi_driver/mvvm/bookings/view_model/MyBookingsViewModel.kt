@@ -9,6 +9,7 @@ import com.example.zapp_taxi_driver.mvvm.bookings.adapter.MyBookingsAdapter
 import com.example.zapp_taxi_driver.mvvm.bookings.model.MyBookingsDataModel
 import com.example.zapp_taxi_driver.mvvm.bookings.model.MyBookingsRequestModel
 import com.example.zapp_taxi_driver.mvvm.bookings.model.MyBookingsResponseModel
+import com.example.zapp_taxi_driver.mvvm.bookings.view.BookingDetailsObj
 import com.example.zapp_taxi_driver.mvvm.driver_report.model.DriverDetailDataModel
 import com.example.zapp_taxi_driver.mvvm.driver_report.model.DriverReportRequestModel
 import com.example.zapp_taxi_driver.mvvm.driver_report.model.DriverReportResponseModel
@@ -25,6 +26,8 @@ class MyBookingsViewModel : ViewModel() {
     fun updateMyBookingsAdapter() {
         adapterMyBookings.setData(arrListMyBookings)
     }
+
+    var bookingDetailsObj = BookingDetailsObj()
 
     val mutMyBookingsResponse : MutableLiveData<MyBookingsResponseModel?> = MutableLiveData()
     fun myBookingsApi(model : MyBookingsRequestModel){

@@ -1,5 +1,6 @@
 package com.example.zapp_taxi_driver.mvvm.bookings.view
 
+import AppNavigation.navigateToBookingDetails
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -126,6 +127,18 @@ class MyBookingsFragment : BaseFragment() {
         binding.rvMyBookings.isVisible = viewModel.arrListMyBookings.isNotEmpty()
         binding.layoutEmpty.root.isVisible = viewModel.arrListMyBookings.isEmpty()
         viewModel.updateMyBookingsAdapter()
+
+        viewModel.adapterMyBookings.onClickEvent = object : CommonInterfaceClickEvent {
+            override fun onItemClick(type: String, position: Int) {
+                if (type == "bookingClicked"){
+                    navigateToBookingDetails(
+                        bookingDetailsObj = BookingDetailsObj(
+                            model = viewModel.arrListMyBookings[position]
+                        )
+                    )
+                }
+            }
+        }
     }
 
     private fun callMyBookingsApi(showLoader: Boolean = true){
