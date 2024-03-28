@@ -91,7 +91,7 @@ class MyBookingsFragment : BaseFragment() {
             title = getString(R.string.no_bookings),
             subTitle = getString(R.string.you_haven_t_completed_any_bookings_yet),
         )
-        callMyBookingsApi(false)
+        callMyBookingsApi()
     }
 
     private fun onClickListeners(){

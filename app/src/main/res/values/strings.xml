@@ -23,12 +23,6 @@
     <string name="select">Select</string>
     <string name="are_you_sure">Are you sure?</string>
 
-    <!--    language-->
-    <string name="alert_language">تريد تغيير لغتك إلى اللغة العربية؟</string>
-    <string name="yes_lang">نعم</string>
-    <string name="no_lang">لا</string>
-    <string name="selected_language_name">العربية</string>
-    <string name="alert_title_lang">انذار!</string>
 
     <string name="choose_image">Choose image</string>
     <string name="camera">Camera</string>

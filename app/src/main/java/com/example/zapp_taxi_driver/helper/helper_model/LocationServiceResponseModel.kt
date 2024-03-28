@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 data class LocationServiceResponseModel(
     val Payment_status: Int? = null,
     val available: Int? = null,
-    val booking_local: List<String?>? = null,
+    val booking_local: ArrayList<String?>? = null,
     val code: Int? = null,
     val message: String? = null,
     val reason: List<String?>? = null,

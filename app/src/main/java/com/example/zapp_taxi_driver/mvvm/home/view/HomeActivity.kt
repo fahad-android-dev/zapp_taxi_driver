@@ -162,16 +162,16 @@ Get Cabs bookings for local,rental and outstation travels.
         }
 
         headerLayout.conDriverReport.setOnClickListener {
-            binding.rootLayout.closeDrawers()
             findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_navigation_driver_report)
+            binding.rootLayout.closeDrawers()
         }
         headerLayout.conMyProfile.setOnClickListener {
-            binding.rootLayout.closeDrawers()
             findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_navigation_my_profile)
+            binding.rootLayout.closeDrawers()
         }
         headerLayout.conMyBookings.setOnClickListener {
-            binding.rootLayout.closeDrawers()
             findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_navigation_my_bookings)
+            binding.rootLayout.closeDrawers()
         }
     }
 

@@ -17,9 +17,6 @@
     <action
         android:id="@+id/action_to_navigation_driver_report"
         app:destination="@id/navigation_driver_report"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_right"
-        app:popExitAnim="@anim/slide_out_right"
         />
 
     <fragment
@@ -41,9 +38,6 @@
     <action
         android:id="@+id/action_to_navigation_my_bookings"
         app:destination="@id/navigation_my_bookings"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_right"
-        app:popExitAnim="@anim/slide_out_right"
         />
 
     <fragment

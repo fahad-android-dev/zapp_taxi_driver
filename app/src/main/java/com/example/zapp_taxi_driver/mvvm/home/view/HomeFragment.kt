@@ -96,6 +96,9 @@ class HomeFragment : BaseFragment() {
 
         LocationService.locationResponse.observe(viewLifecycleOwner) {
             binding.layoutRideDetails.root.isVisible = it.booking_local?.isEmpty() != true
+            binding.btnTotalBooking.text = it.total_booking
+            binding.btnTodayBooking.text = it.today_details?.today_booking
+            binding.btnTotalFare.text = "₹${it.today_details?.total_amt}"
         }
 
     }

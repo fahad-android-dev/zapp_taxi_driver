@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -103,6 +104,7 @@ class DriverReportFragment : BaseFragment() {
     private fun setData(data: ArrayList<DriverDetailDataModel?>?) {
         viewModel.arrListDriverReport.clear()
         viewModel.arrListDriverReport.addAll(data ?: arrayListOf())
+        binding.rvDriverReport.layoutAnimation = AnimationUtils.loadLayoutAnimation(mActivity, R.anim.layout_animation_fall_down)
         viewModel.updateDriverReportAdapter()
     }
 
